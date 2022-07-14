@@ -1,15 +1,14 @@
 import './App.css';
-import { Button, DatePicker, version } from 'antd';
 import 'antd/dist/antd.css';
+import { Layout } from 'antd';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <h1>antd version: {version}</h1>
-      <DatePicker />
-      <Button type="primary" style={{ marginLeft: 8 }}>
-        Primary Button
-      </Button>
+      <Layout>
+        <Navbar />
+      </Layout>
     </div>
   );
 }
