@@ -7,7 +7,7 @@ import {
   TwitterOutlined,
   InstagramFilled
 } from '@ant-design/icons';
-
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
 const { Header } = Layout;
@@ -36,13 +36,15 @@ const styles = {
   icon: { fontSize: '30px', marginRight: '10px' }
 };
 
-function Navbar() {
+export default function Navbar() {
+  const navigate = useNavigate();
+
   const navItems = [
-    { label: 'BIO/RESUME', key: 'bio' },
-    { label: 'LISTEN', key: 'lis' },
-    { label: 'SEE', key: 'see' },
-    { label: 'EVENTS', key: 'evt' },
-    { label: 'LESSONS', key: 'les' }
+    { label: 'BIO/RESUME', key: 'bio', nav: 'bio' },
+    { label: 'LISTEN', key: 'lis', nav: 'listen' },
+    { label: 'SEE', key: 'see', nav: 'see' },
+    { label: 'EVENTS', key: 'evt', nav: 'events' },
+    { label: 'LESSONS', key: 'les', nav: 'lessons' }
   ];
 
   const linkItems = [
@@ -76,33 +78,46 @@ function Navbar() {
 
   const [currentPage, setCurrentPage] = useState('');
 
+  function handleNavClick(key, navId) {
+    // update page state
+    setCurrentPage(key);
+    // navigate to new page;
+    navigate(`/${navId}`);
+  }
+
   return (
     <Header style={styles.header}>
-      <h1 style={styles.logo}>Mike Miller</h1>
+      <Link to={'/'} style={styles.logo}>
+        Mike Miller
+      </Link>
       <nav style={styles.nav}>
         {navItems.map(item => {
           return (
             <p
               className="nav-item"
               key={item.key}
-              id={item.key}
               style={{
                 marginRight: '20px',
                 marginTop: 'auto',
                 marginBottom: 'auto'
               }}
-              onClick={e => setCurrentPage(e.target.id)}
+              onClick={() => handleNavClick(item.key, item.nav)}
             >
               {item.label}
             </p>
           );
         })}
-        <Button ghost>Contact</Button>
+        <Button ghost>CONTACT</Button>
       </nav>
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', marginTop: 8 }}>
         {linkItems.map(link => {
           return (
-            <a href={link.href} target="_blank" rel="noopener noreferrer">
+            <a
+              href={link.href}
+              key={link.name}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {link.icon}
             </a>
           );
@@ -111,5 +126,3 @@ function Navbar() {
     </Header>
   );
 }
-
-export default Navbar;
