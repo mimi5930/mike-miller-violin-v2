@@ -17,7 +17,8 @@ function listAllEvents(req, res) {
     },
     (err, response) => {
       if (err) {
-        return res.status(400).send(err);
+        console.log(err);
+        return res.status(400).json(err);
       }
       return res.json(response.data.items);
     }
@@ -36,7 +37,7 @@ function getEvent(req, res) {
       eventId: req.params.eventId
     },
     (err, response) => {
-      if (err) return res.status(400).send(err);
+      if (err) return res.status(400).json(err);
       return res.json(response.data);
     }
   );
