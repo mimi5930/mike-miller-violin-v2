@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { format } from 'date-fns';
-import { Button } from 'antd';
+import { Button, Card, Skeleton } from 'antd';
 import { CalendarOutlined } from '@ant-design/icons';
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
@@ -56,7 +56,7 @@ export default function EventInfo() {
     getEventData();
   }, []);
 
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Skeleton active style={{ padding: '50px' }} />;
 
   if (error) return <div>Event not found!</div>;
 
