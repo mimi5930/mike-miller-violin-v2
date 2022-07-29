@@ -111,7 +111,14 @@ export default function Navbar() {
         })}
         <Button ghost>CONTACT</Button>
       </nav>
-      <div style={{ display: 'flex', flexDirection: 'row', marginTop: 8 }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          marginTop: 8,
+          width: '200px'
+        }}
+      >
         {linkItems.map(link => {
           return (
             <a
