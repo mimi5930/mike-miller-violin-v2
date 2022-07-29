@@ -23,7 +23,9 @@ const styles = {
   logo: {
     color: 'white',
     marginTop: 'auto',
-    marginBottom: 'auto'
+    marginBottom: 'auto',
+    fontSize: '30px',
+    width: '200px'
   },
   nav: {
     display: 'flex',
@@ -40,11 +42,11 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const navItems = [
-    { label: 'BIO/RESUME', key: 'bio', nav: 'bio' },
-    { label: 'LISTEN', key: 'lis', nav: 'listen' },
-    { label: 'SEE', key: 'see', nav: 'see' },
-    { label: 'EVENTS', key: 'evt', nav: 'events' },
-    { label: 'LESSONS', key: 'les', nav: 'lessons' }
+    { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
+    { label: 'Listen', key: 'lis', nav: 'listen' },
+    { label: 'See', key: 'see', nav: 'see' },
+    { label: 'Events', key: 'evt', nav: 'events' },
+    { label: 'Lessons', key: 'les', nav: 'lessons' }
   ];
 
   const linkItems = [
@@ -87,7 +89,7 @@ export default function Navbar() {
 
   return (
     <Header style={styles.header}>
-      <Link to={'/'} style={styles.logo}>
+      <Link to={'/'} className="logo-title" style={styles.logo}>
         Mike Miller
       </Link>
       <nav style={styles.nav}>
