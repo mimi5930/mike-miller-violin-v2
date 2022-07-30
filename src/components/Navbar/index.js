@@ -35,7 +35,11 @@ const styles = {
     alignItems: 'center',
     fontSize: '18px'
   },
-  icon: { fontSize: '30px', marginRight: '10px' }
+  icon: {
+    fontSize: '30px',
+    marginRight: '10px',
+    color: 'white'
+  }
 };
 
 export default function Navbar() {
@@ -109,7 +113,9 @@ export default function Navbar() {
             </p>
           );
         })}
-        <Button ghost>CONTACT</Button>
+        <Button ghost className="contact-button">
+          CONTACT
+        </Button>
       </nav>
       <div
         style={{
