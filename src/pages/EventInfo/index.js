@@ -7,6 +7,9 @@ import { CalendarOutlined } from '@ant-design/icons';
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
 
+// redux imports
+import { useSelector } from 'react-redux/es/exports';
+
 // const sampleEvent = {
 //   id: 1,
 //   summary: 'Event Title',
@@ -29,6 +32,8 @@ export default function EventInfo() {
   const params = useParams();
   let { eventId } = params;
 
+  const eventsList = useSelector(state => state.events.value);
+
   const [eventData, setEventData] = useState('');
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -42,7 +47,7 @@ export default function EventInfo() {
           return;
         }
         const data = await response.json();
-
+        console.log('fetch ran');
         setEventData(data);
         return;
       } catch (error) {
@@ -53,7 +58,17 @@ export default function EventInfo() {
       }
     }
 
-    getEventData();
+    if (eventsList.length) {
+      console.log('ran filter');
+      let event = eventsList.filter(event => {
+        return event.id === eventId;
+      });
+      if (!event.length) {
+        return getEventData();
+      }
+      setEventData(event[0]);
+      setLoading(false);
+    } else getEventData();
   }, []);
 
   if (isLoading) return <Skeleton active style={{ padding: '50px' }} />;
