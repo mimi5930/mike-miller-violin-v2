@@ -94,53 +94,63 @@ export default function Navbar() {
     navigate(`/${navId}`);
   }
 
+  if (!smallScreen) {
+    return (
+      <Header style={styles.header}>
+        <Link to={'/'} className="logo-title" style={styles.logo}>
+          Mike Miller
+        </Link>
+        <nav style={styles.nav}>
+          {navItems.map(item => {
+            return (
+              <p
+                className="nav-item"
+                key={item.key}
+                style={{
+                  marginRight: '20px',
+                  marginTop: 'auto',
+                  marginBottom: 'auto'
+                }}
+                onClick={() => handleNavClick(item.key, item.nav)}
+              >
+                {item.label}
+              </p>
+            );
+          })}
+          <Button ghost className="contact-button">
+            CONTACT
+          </Button>
+        </nav>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: 8,
+            width: '200px'
+          }}
+        >
+          {linkItems.map(link => {
+            return (
+              <a
+                href={link.href}
+                key={link.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.icon}
+              </a>
+            );
+          })}
+        </div>
+      </Header>
+    );
+  }
+
   return (
     <Header style={styles.header}>
       <Link to={'/'} className="logo-title" style={styles.logo}>
         Mike Miller
       </Link>
-      <nav style={styles.nav}>
-        {navItems.map(item => {
-          return (
-            <p
-              className="nav-item"
-              key={item.key}
-              style={{
-                marginRight: '20px',
-                marginTop: 'auto',
-                marginBottom: 'auto'
-              }}
-              onClick={() => handleNavClick(item.key, item.nav)}
-            >
-              {item.label}
-            </p>
-          );
-        })}
-        <Button ghost className="contact-button">
-          CONTACT
-        </Button>
-      </nav>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          marginTop: 8,
-          width: '200px'
-        }}
-      >
-        {linkItems.map(link => {
-          return (
-            <a
-              href={link.href}
-              key={link.name}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.icon}
-            </a>
-          );
-        })}
-      </div>
     </Header>
   );
 }
