@@ -10,23 +10,6 @@ import './event-info.css';
 // redux imports
 import { useSelector } from 'react-redux/es/exports';
 
-// const sampleEvent = {
-//   id: 1,
-//   summary: 'Event Title',
-//   organizer: {
-//     email: 'bsi6g9s12172d39fo1b5g8sh74@group.calendar.google.com',
-//     displayName: 'Mike Miller - Violin',
-//     self: true
-//   },
-//   start: {
-//     dateTime: '2022-07-24T15:00:00-05:00'
-//   },
-//   location: 'Target, 449 Commerce Dr, Woodbury, MN 55125, USA',
-//   htmlLink:
-//     'https://www.google.com/calendar/event?eid=MmJkaGsxZzRucTVjOWxob29taTFwbmNhZTYgYnNpNmc5czEyMTcyZDM5Zm8xYjVnOHNoNzRAZw',
-//   description:
-//     'This is my first Test event of the year! Please come join me as I perform some contemporary works from you know when!<br><br>Featured works:<br><ul><li>Beethoven Symphony No. 1</li><li>Beethoven Symphony No. 2</li></ul>'
-// };
 export default function EventInfo() {
   // get the event's Id from params
   const params = useParams();
@@ -47,7 +30,6 @@ export default function EventInfo() {
           return;
         }
         const data = await response.json();
-        console.log('fetch ran');
         setEventData(data);
         return;
       } catch (error) {
@@ -59,7 +41,6 @@ export default function EventInfo() {
     }
 
     if (eventsList.length) {
-      console.log('ran filter');
       let event = eventsList.filter(event => {
         return event.id === eventId;
       });
