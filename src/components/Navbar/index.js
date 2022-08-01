@@ -9,8 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
-
-const { Header } = Layout;
+import { useMediaQuery } from 'react-responsive';
 
 const styles = {
   header: {
@@ -43,6 +42,10 @@ const styles = {
 };
 
 export default function Navbar() {
+  const { Header } = Layout;
+
+  const smallScreen = useMediaQuery({ query: '(max-width: 1080px)' });
+
   const navigate = useNavigate();
 
   const navItems = [
