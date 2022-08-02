@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Drawer, Layout } from 'antd';
 import {
   YoutubeFilled,
@@ -6,8 +6,7 @@ import {
   LinkedinFilled,
   TwitterOutlined,
   InstagramFilled,
-  MenuOutlined,
-  CloseOutlined
+  MenuOutlined
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
@@ -50,6 +49,24 @@ const styles = {
     fontSize: '30px',
     marginRight: '10px',
     color: 'rgb(47, 62, 70)'
+  },
+  linkContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 8,
+    width: '200px'
+  },
+  mobileNavContainer: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  mobileLinkContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 };
 
@@ -59,7 +76,6 @@ export default function Navbar() {
   const smallScreen = useMediaQuery({ query: '(max-width: 1080px)' });
 
   const navigate = useNavigate();
-  console.log(window.location);
 
   const [currentPage, setCurrentPage] = useState(
     window.location.pathname.slice(1) || ''
@@ -145,14 +161,7 @@ export default function Navbar() {
             CONTACT
           </Button>
         </nav>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            marginTop: 8,
-            width: '200px'
-          }}
-        >
+        <div style={styles.linkContainer}>
           {linkItems.map(link => {
             return (
               <a
@@ -194,15 +203,7 @@ export default function Navbar() {
         width="80vw"
         onClose={() => setDrawer(!drawer)}
       >
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-around'
-          }}
-        >
+        <div style={styles.mobileNavContainer}>
           <div>
             {navItems.map(item => {
               return (
@@ -219,13 +220,7 @@ export default function Navbar() {
               );
             })}
           </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center'
-            }}
-          >
+          <div style={styles.mobileLinkContainer}>
             {linkItems.map(link => {
               return (
                 <a

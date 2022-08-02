@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { format } from 'date-fns';
-import { Button, Card, Skeleton } from 'antd';
+import { Button, Skeleton } from 'antd';
 import { CalendarOutlined } from '@ant-design/icons';
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
@@ -113,7 +113,8 @@ export default function EventInfo() {
         >
           <h2 style={{ fontSize: 40 }}>Description</h2>
           <div style={{ fontSize: 20, maxWidth: '45vw' }}>
-            {parse(eventData.description)}
+            {/* TODO fix this to parse correctly */}
+            {eventData.description && parse(eventData.description)}
           </div>
         </div>
         <img
