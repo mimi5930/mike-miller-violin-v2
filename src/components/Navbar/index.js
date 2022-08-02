@@ -42,7 +42,7 @@ const styles = {
     color: 'white'
   },
   iconMobile: {
-    fontSize: '50px',
+    fontSize: '30px',
     marginRight: '10px',
     color: 'rgb(47, 62, 70)'
   }
@@ -173,7 +173,7 @@ export default function Navbar() {
       <Drawer
         placement="right"
         visible={drawer}
-        width="70vw"
+        width="80vw"
         onClose={() => setDrawer(!drawer)}
       >
         <div
