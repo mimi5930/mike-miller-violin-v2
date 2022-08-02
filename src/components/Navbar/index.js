@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Button, Layout } from 'antd';
+import { Button, Drawer, Layout } from 'antd';
 import {
   YoutubeFilled,
   FacebookFilled,
   LinkedinFilled,
   TwitterOutlined,
-  InstagramFilled
+  InstagramFilled,
+  MenuOutlined,
+  CloseOutlined
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
@@ -38,6 +40,11 @@ const styles = {
     fontSize: '30px',
     marginRight: '10px',
     color: 'white'
+  },
+  iconMobile: {
+    fontSize: '50px',
+    marginRight: '10px',
+    color: 'rgb(47, 62, 70)'
   }
 };
 
@@ -47,6 +54,9 @@ export default function Navbar() {
   const smallScreen = useMediaQuery({ query: '(max-width: 1080px)' });
 
   const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState('');
+  const [drawer, setDrawer] = useState(false);
 
   const navItems = [
     { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
@@ -60,40 +70,41 @@ export default function Navbar() {
     {
       name: 'YouTube',
       href: 'https://www.youtube.com/channel/UCYT-un1xuD4-k0bAVKCbPMg',
-      icon: <YoutubeFilled style={styles.icon} />
+      icon: <YoutubeFilled style={drawer ? styles.iconMobile : styles.icon} />
     },
     {
       name: 'Facebook',
       href: 'https://www.facebook.com/mikemillerviolin',
-      icon: <FacebookFilled style={styles.icon} />
+      icon: <FacebookFilled style={drawer ? styles.iconMobile : styles.icon} />
     },
 
     {
       name: 'Instagram',
       href: 'https://www.instagram.com/mikemillerviolin/',
-      icon: <InstagramFilled style={styles.icon} />
+      icon: <InstagramFilled style={drawer ? styles.iconMobile : styles.icon} />
     },
     {
       name: 'Twitter',
       href: 'https://twitter.com/MichaelJohnMil8',
-      icon: <TwitterOutlined style={styles.icon} />
+      icon: <TwitterOutlined style={drawer ? styles.iconMobile : styles.icon} />
     },
     {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/michael-miller-4b72331a2/',
-      icon: <LinkedinFilled style={styles.icon} />
+      icon: <LinkedinFilled style={drawer ? styles.iconMobile : styles.icon} />
     }
   ];
-
-  const [currentPage, setCurrentPage] = useState('');
 
   function handleNavClick(key, navId) {
     // update page state
     setCurrentPage(key);
     // navigate to new page;
     navigate(`/${navId}`);
+    // close drawer if open
+    setDrawer(false);
   }
 
+  // desktop display
   if (!smallScreen) {
     return (
       <Header style={styles.header}>
@@ -146,11 +157,72 @@ export default function Navbar() {
     );
   }
 
+  // mobile display
   return (
-    <Header style={styles.header}>
-      <Link to={'/'} className="logo-title" style={styles.logo}>
-        Mike Miller
-      </Link>
-    </Header>
+    <>
+      <Header style={styles.header}>
+        <Link to={'/'} className="logo-title" style={styles.logo}>
+          Mike Miller
+        </Link>
+        <Button
+          icon={<MenuOutlined />}
+          size="large"
+          onClick={() => setDrawer(!drawer)}
+        />
+      </Header>
+      <Drawer
+        placement="right"
+        visible={drawer}
+        width="70vw"
+        onClose={() => setDrawer(!drawer)}
+      >
+        <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-around'
+          }}
+        >
+          <div>
+            {navItems.map(item => {
+              return (
+                <p
+                  className="nav-item"
+                  key={item.key}
+                  style={{
+                    fontSize: '30px'
+                  }}
+                  onClick={() => handleNavClick(item.key, item.nav)}
+                >
+                  {item.label}
+                </p>
+              );
+            })}
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center'
+            }}
+          >
+            {linkItems.map(link => {
+              return (
+                <a
+                  href={link.href}
+                  key={link.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.icon}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </Drawer>
+    </>
   );
 }
