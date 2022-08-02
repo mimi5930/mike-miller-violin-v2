@@ -1,5 +1,5 @@
 .nav-item:hover {
-  opacity: 70%;
+  color: #17c3b2;
   cursor: pointer;
   transition: all 0.3s;
 }
