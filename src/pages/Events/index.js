@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Event from '../../components/Event';
 import { format } from 'date-fns';
 import { Card, Skeleton } from 'antd';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Drawer, Layout } from 'antd';
 import {
   YoutubeFilled,
@@ -36,6 +36,11 @@ const styles = {
     alignItems: 'center',
     fontSize: '18px'
   },
+  navItem: {
+    marginRight: '20px',
+    marginTop: 'auto',
+    marginBottom: 'auto'
+  },
   icon: {
     fontSize: '30px',
     marginRight: '10px',
@@ -54,8 +59,11 @@ export default function Navbar() {
   const smallScreen = useMediaQuery({ query: '(max-width: 1080px)' });
 
   const navigate = useNavigate();
+  console.log(window.location);
 
-  const [currentPage, setCurrentPage] = useState('');
+  const [currentPage, setCurrentPage] = useState(
+    window.location.pathname.slice(1) || ''
+  );
   const [drawer, setDrawer] = useState(false);
 
   const navItems = [
@@ -95,11 +103,11 @@ export default function Navbar() {
     }
   ];
 
-  function handleNavClick(key, navId) {
+  function handleNavClick(nav) {
     // update page state
-    setCurrentPage(key);
+    setCurrentPage(nav);
     // navigate to new page;
-    navigate(`/${navId}`);
+    navigate(`/${nav}`);
     // close drawer if open
     setDrawer(false);
   }
@@ -108,7 +116,12 @@ export default function Navbar() {
   if (!smallScreen) {
     return (
       <Header style={styles.header}>
-        <Link to={'/'} className="logo-title" style={styles.logo}>
+        <Link
+          to={'/'}
+          className="logo-title"
+          style={styles.logo}
+          onClick={() => setCurrentPage('')}
+        >
           Mike Miller
         </Link>
         <nav style={styles.nav}>
@@ -117,12 +130,12 @@ export default function Navbar() {
               <p
                 className="nav-item"
                 key={item.key}
-                style={{
-                  marginRight: '20px',
-                  marginTop: 'auto',
-                  marginBottom: 'auto'
-                }}
-                onClick={() => handleNavClick(item.key, item.nav)}
+                style={
+                  currentPage === item.nav
+                    ? { ...styles.navItem, color: '#17c3b2' }
+                    : styles.navItem
+                }
+                onClick={() => handleNavClick(item.nav)}
               >
                 {item.label}
               </p>
@@ -161,7 +174,12 @@ export default function Navbar() {
   return (
     <>
       <Header style={styles.header}>
-        <Link to={'/'} className="logo-title" style={styles.logo}>
+        <Link
+          to={'/'}
+          className="logo-title"
+          style={styles.logo}
+          onClick={() => setCurrentPage('')}
+        >
           Mike Miller
         </Link>
         <Button
@@ -194,7 +212,7 @@ export default function Navbar() {
                   style={{
                     fontSize: '30px'
                   }}
-                  onClick={() => handleNavClick(item.key, item.nav)}
+                  onClick={() => handleNavClick(item.nav)}
                 >
                   {item.label}
                 </p>
