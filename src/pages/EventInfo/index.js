@@ -113,8 +113,12 @@ export default function EventInfo() {
         >
           <h2 style={{ fontSize: 40 }}>Description</h2>
           <div style={{ fontSize: 20, maxWidth: '45vw' }}>
-            {/* TODO fix this to parse correctly */}
-            {eventData.description && parse(eventData.description)}
+            {eventData.description &&
+              parse(
+                eventData.description
+                  .replaceAll('<html-blob>', '')
+                  .replaceAll('</html-blob>', '')
+              )}
           </div>
         </div>
         <img
