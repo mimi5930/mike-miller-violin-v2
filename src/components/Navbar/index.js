@@ -16,12 +16,12 @@ const styles = {
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: '#2f3e46',
+    backgroundColor: '#ffecd1',
     alignItems: 'center',
     height: '100px'
   },
   logo: {
-    color: 'white',
+    color: 'black',
     marginTop: 'auto',
     marginBottom: 'auto',
     fontSize: '30px',
@@ -30,8 +30,8 @@ const styles = {
   nav: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#2f3e46',
-    color: 'white',
+    backgroundColor: '#ffecd1',
+    color: 'black',
     alignItems: 'center',
     fontSize: '18px'
   },
@@ -43,7 +43,7 @@ const styles = {
   icon: {
     fontSize: '30px',
     marginRight: '10px',
-    color: 'white'
+    color: '#78290f'
   },
   iconMobile: {
     fontSize: '30px',
@@ -148,7 +148,7 @@ export default function Navbar() {
                 key={item.key}
                 style={
                   currentPage === item.nav
-                    ? { ...styles.navItem, color: '#17c3b2' }
+                    ? { ...styles.navItem, color: '#84a98c' }
                     : styles.navItem
                 }
                 onClick={() => handleNavClick(item.nav)}
@@ -157,7 +157,7 @@ export default function Navbar() {
               </p>
             );
           })}
-          <Button ghost className="contact-button">
+          <Button ghost className="contact-button" color="#15616d">
             CONTACT
           </Button>
         </nav>

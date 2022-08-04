@@ -1,5 +1,6 @@
 .nav-item:hover {
-  color: #17c3b2;
+  color: #84a98c;
+  /* text-decoration: underline; */
   cursor: pointer;
   transition: all 0.3s;
 }
