@@ -1,17 +1,20 @@
 import { Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
 import './event.css';
 
 export default function Event({ id, title, time, location }) {
   const navigate = useNavigate();
+  console.log(time);
+
   return (
     <div style={{ marginRight: 'auto', marginLeft: 'auto' }}>
       <Card
         style={{
           width: '80vw',
           minHeight: '10vh',
-          margin: 10
+          margin: 10,
+          border: '5px solid #ff7d00',
+          boxShadow: '0px 0px 5px 0px black'
         }}
       >
         <div
@@ -24,8 +27,17 @@ export default function Event({ id, title, time, location }) {
           }}
         >
           <img
-            src="https://dummyimage.com/500X400.png"
+            src={
+              title.includes('SCVSO')
+                ? require('../../images/SCVSO.webp')
+                : 'https://dummyimage.com/500X400.png'
+            }
             alt="A logo for the event"
+            style={{
+              backgroundColor: 'white',
+              height: '400px',
+              width: '500px'
+            }}
           ></img>
           <div
             style={{
@@ -44,8 +56,8 @@ export default function Event({ id, title, time, location }) {
               {title}
             </h2>
             {/* </a> */}
-            <p style={{ fontSize: 30, marginBottom: 0 }}>{time}</p>
-            <p style={{ fontSize: 30 }}>{location}</p>
+            <p style={{ fontSize: 25, marginBottom: 0 }}>{time}</p>
+            <p style={{ fontSize: 25 }}>{location}</p>
           </div>
         </div>
       </Card>
