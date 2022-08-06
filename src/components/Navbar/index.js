@@ -148,7 +148,7 @@ export default function Navbar() {
                 key={item.key}
                 style={
                   currentPage === item.nav
-                    ? { ...styles.navItem, color: '#84a98c' }
+                    ? { ...styles.navItem, color: '#78290f' }
                     : styles.navItem
                 }
                 onClick={() => handleNavClick(item.nav)}
