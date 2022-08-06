@@ -68,6 +68,7 @@ export default function Events() {
             title={event.summary}
             time={format(new Date(event.start.dateTime), 'EEEE MMM d, p')}
             location={event.location}
+            smallScreen={smallScreen}
           />
         );
       })}

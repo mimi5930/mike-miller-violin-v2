@@ -67,7 +67,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center'
-  }
+  },
+  hamburgerStyle: { width: '50px', height: '50px' }
 };
 
 export default function Navbar() {
@@ -193,7 +194,7 @@ export default function Navbar() {
         </Link>
         <Button
           icon={<MenuOutlined />}
-          size="large"
+          style={styles.hamburgerStyle}
           onClick={() => setDrawer(!drawer)}
         />
       </Header>
