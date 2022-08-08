@@ -135,7 +135,7 @@ export default function Navbar() {
       <Header style={styles.header}>
         <Link
           to={'/'}
-          className="logo-title"
+          className="title"
           style={styles.logo}
           onClick={() => setCurrentPage('')}
         >
@@ -145,7 +145,7 @@ export default function Navbar() {
           {navItems.map(item => {
             return (
               <p
-                className="nav-item"
+                className="text nav-text"
                 key={item.key}
                 style={
                   currentPage === item.nav
@@ -158,7 +158,12 @@ export default function Navbar() {
               </p>
             );
           })}
-          <Button ghost className="contact-button" color="#15616d">
+          <Button
+            ghost
+            className="contact-button"
+            color="#15616d"
+            onClick={() => navigate('/#contact')}
+          >
             CONTACT
           </Button>
         </nav>
@@ -186,7 +191,7 @@ export default function Navbar() {
       <Header style={styles.header}>
         <Link
           to={'/'}
-          className="logo-title"
+          className="title"
           style={styles.logo}
           onClick={() => setCurrentPage('')}
         >
@@ -209,7 +214,7 @@ export default function Navbar() {
             {navItems.map(item => {
               return (
                 <p
-                  className="nav-item"
+                  className="text"
                   key={item.key}
                   style={{
                     fontSize: '30px'

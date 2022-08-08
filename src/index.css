@@ -5,10 +5,10 @@
   --title-font: 'Sawarabi Mincho', sans-serif;
 }
 
-.nav-item {
+.text {
   font-family: var(--main-font);
 }
 
-.logo-title {
+.title {
   font-family: var(--title-font);
 }
