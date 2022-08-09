@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Event from '../../components/Event';
 import { format } from 'date-fns';
-import { Card, Skeleton } from 'antd';
+import { Card, Divider, Skeleton } from 'antd';
 import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
 
@@ -49,30 +49,39 @@ export default function Events() {
     if (eventsList.length === 0) getEvents();
   }, []);
 
-  if (eventsLoading)
-    return (
-      <div style={styles.skeletonContainer}>
-        <Card style={styles.skeletonCard}>
-          <Skeleton active style={styles.skeleton} />
-        </Card>
-      </div>
-    );
-
   return (
     <div style={styles.page}>
-      {eventsList.map(event => {
-        return (
-          <Event
-            key={event.id}
-            id={event.id}
-            title={event.summary}
-            time={format(new Date(event.start.dateTime), 'EEEE MMM d, p')}
-            location={event.location}
-            smallScreen={smallScreen}
-          />
-        );
-      })}
-      ;
+      <h1
+        style={{
+          textAlign: 'center',
+          fontSize: '80px',
+          color: '#15616d',
+          marginBottom: 0
+        }}
+      >
+        Upcoming Events
+      </h1>
+      <Divider></Divider>
+      {eventsLoading ? (
+        <div style={styles.skeletonContainer}>
+          <Card style={styles.skeletonCard}>
+            <Skeleton active style={styles.skeleton} />
+          </Card>
+        </div>
+      ) : (
+        eventsList.map(event => {
+          return (
+            <Event
+              key={event.id}
+              id={event.id}
+              title={event.summary}
+              time={format(new Date(event.start.dateTime), 'EEEE MMM d, p')}
+              location={event.location}
+              smallScreen={smallScreen}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
