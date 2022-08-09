@@ -21,7 +21,7 @@ const styles = {
     height: '100px'
   },
   logo: {
-    color: 'black',
+    color: '#15616d',
     marginTop: 'auto',
     marginBottom: 'auto',
     fontSize: '30px',

@@ -19,10 +19,10 @@ export default function Bio() {
         style={{
           width: '800px',
           height: '800px',
+          backgroundColor: 'black',
           border: '5px solid #ff7d00',
           borderRadius: '15px',
-          margin: 20,
-          backgroundColor: 'black'
+          margin: 20
         }}
       ></img>
       <div style={{ margin: 30 }}>

@@ -12,7 +12,7 @@ export default function Home() {
         <div
           style={{
             height: '100%',
-            width: '100vw',
+            width: '100%',
             backgroundColor: '#010101',
             display: 'flex',
             justifyContent: 'center'
