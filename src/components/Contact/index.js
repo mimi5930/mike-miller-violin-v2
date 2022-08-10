@@ -18,6 +18,14 @@ export default function Contact() {
     other: false
   });
 
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    invalidEmail: false,
+    service: false,
+    message: false
+  });
+
   function handleChange(event) {
     let { name, value } = event.target;
     setInput({ ...input, [name]: value });
@@ -41,6 +49,32 @@ export default function Contact() {
   }
 
   function handleSubmit() {
+    let currentErrors = {};
+    let isEmail = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+    // check if name is empty
+    input.name === ''
+      ? (currentErrors.name = true)
+      : (currentErrors.name = false);
+    // check if email is empty
+    input.email === ''
+      ? (currentErrors.email = true)
+      : (currentErrors.email = false);
+    // validate email
+    !isEmail.test(input.email)
+      ? (currentErrors.invalidEmail = true)
+      : (currentErrors.invalidEmail = false);
+    // check that service has been checked
+    input.service === ''
+      ? (currentErrors.service = true)
+      : (currentErrors.service = false);
+    // check if message is empty
+    input.message === ''
+      ? (currentErrors.message = true)
+      : (currentErrors.message = false);
+
+    // add errors to state
+    setErrors({ ...errors, ...currentErrors });
+    console.log('errors', errors);
     console.log('values', input);
   }
 
@@ -67,6 +101,7 @@ export default function Contact() {
         <Input
           style={{ marginBottom: '20px' }}
           name="name"
+          status={errors.name && 'error'}
           size="large"
           placeholder="Name*"
           onChange={handleChange}
