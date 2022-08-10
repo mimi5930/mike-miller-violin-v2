@@ -50,7 +50,6 @@ const styles = {
 
 export default function Event({ id, title, time, location, smallScreen }) {
   const navigate = useNavigate();
-  console.log(time);
 
   return (
     <div style={{ marginRight: 'auto', marginLeft: 'auto' }}>
