@@ -3,37 +3,59 @@ import { Button, Divider } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 
+const styles = {
+  sectionStyle: {
+    backgroundColor: '#ffecd1',
+    height: 'calc(100vh - 100px)',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  smallSectionStyle: {
+    backgroundColor: '#ffecd1',
+    height: 'calc(100vh - 100px)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  imageContainer: {
+    minWidth: '35vw',
+    minHeight: '35vw',
+    backgroundColor: 'black',
+    border: '5px solid #ff7d00',
+    borderRadius: '15px',
+    margin: 20,
+    backgroundImage: `url(${require('../../images/violin-headshot.jpg')})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: '80px',
+    color: '#15616d',
+    marginBottom: '0px'
+  }
+};
+
 export default function Bio() {
+  const smallScreen = useMediaQuery({ query: '(max-width: 1500px)' });
+
   return (
     <section
-      style={{
-        backgroundColor: '#ffecd1',
-        height: 'calc(100vh - 100px)',
-        display: 'flex',
-        alignItems: 'center'
-      }}
+      style={!smallScreen ? styles.sectionStyle : styles.smallSectionStyle}
     >
-      <img
-        src={require('../../images/violin-headshot.jpg')}
-        alt="Mike holding his violin with an inviting smile on his face"
-        style={{
-          width: '800px',
-          height: '800px',
-          backgroundColor: 'black',
-          border: '5px solid #ff7d00',
-          borderRadius: '15px',
-          margin: 20
-        }}
-      ></img>
-      <div style={{ margin: 30 }}>
-        <h1
-          className="title"
-          style={{ textAlign: 'center', fontSize: '80px', color: '#15616d' }}
-        >
+      <div
+        style={
+          !smallScreen
+            ? styles.imageContainer
+            : { ...styles.imageContainer, minWidth: '60vw', minHeight: '60vw' }
+        }
+      ></div>
+      <div style={{ backgroundColor: '#ffecd1' }}>
+        <h1 className="title" style={styles.title}>
           Biography
         </h1>
         <Divider></Divider>
-        <p className="text" style={{ fontSize: '20px' }}>
+        <p className="text" style={{ fontSize: '20px', padding: '30px' }}>
           Mike Miller has always felt inspired to teach and perform. These
           passions have combined perfectly through the violin. Currently, Miller
           performs as Concertmaster of SCVSO under the direction of Kris
@@ -58,12 +80,14 @@ export default function Bio() {
           for two years. Miller is very excited to teach in his own private
           studio and continue performing in the Twin Cities.
         </p>
-        <Button
-          icon={<DownOutlined />}
-          style={{ backgroundColor: '#78290f', color: 'white' }}
-        >
-          Mr. Miller's Resume
-        </Button>
+        <div style={{ padding: '0px 30px 30px' }}>
+          <Button
+            icon={<DownOutlined />}
+            style={{ backgroundColor: '#78290f', color: 'white' }}
+          >
+            Mr. Miller's Resume
+          </Button>
+        </div>
       </div>
     </section>
   );

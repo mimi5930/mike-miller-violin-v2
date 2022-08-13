@@ -25,6 +25,7 @@ const styles = {
     marginTop: 'auto',
     marginBottom: 'auto',
     fontSize: '30px',
+
     width: '200px'
   },
   nav: {
@@ -85,10 +86,10 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
-    { label: 'Listen', key: 'lis', nav: 'listen' },
-    { label: 'See', key: 'see', nav: 'see' },
     { label: 'Events', key: 'evt', nav: 'events' },
-    { label: 'Lessons', key: 'les', nav: 'lessons' }
+    { label: 'Lessons', key: 'les', nav: 'lessons' },
+    { label: 'See', key: 'see', nav: 'see' },
+    { label: 'Listen', key: 'lis', nav: 'listen' }
   ];
 
   const linkItems = [
@@ -214,7 +215,7 @@ export default function Navbar() {
             {navItems.map(item => {
               return (
                 <p
-                  className="text"
+                  className="text nav-text"
                   key={item.key}
                   style={{
                     fontSize: '30px'
