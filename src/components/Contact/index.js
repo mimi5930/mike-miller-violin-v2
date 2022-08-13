@@ -1,85 +1,19 @@
-import { Button, Checkbox, Input } from 'antd';
-import React, { useState } from 'react';
+import { Button, Input, Form, Radio, Space } from 'antd';
+import React from 'react';
 
 const { TextArea } = Input;
 
 export default function Contact() {
-  const [input, setInput] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
-
-  const [checkValue, setCheckValue] = useState({
-    performer: false,
-    lessons: false,
-    other: false
-  });
-
-  const [errors, setErrors] = useState({
-    name: false,
-    email: false,
-    invalidEmail: false,
-    service: false,
-    message: false
-  });
-
-  function handleChange(event) {
-    let { name, value } = event.target;
-    setInput({ ...input, [name]: value });
+  function onFinish(values) {
+    console.log('success', values);
   }
 
-  function handleCheck(event) {
-    switch (event.target.name) {
-      case 'performer':
-        setInput({ ...input, service: 'performer' });
-        setCheckValue({ performer: true, lessons: false, other: false });
-        break;
-      case 'lessons':
-        setInput({ ...input, service: 'lessons' });
-        setCheckValue({ lessons: true, performer: false, other: false });
-        break;
-      default:
-        setInput({ ...input, service: 'other' });
-        setCheckValue({ other: true, performer: false, lessons: false });
-        break;
-    }
-  }
-
-  function handleSubmit() {
-    let currentErrors = {};
-    let isEmail = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-    // check if name is empty
-    input.name === ''
-      ? (currentErrors.name = true)
-      : (currentErrors.name = false);
-    // check if email is empty
-    input.email === ''
-      ? (currentErrors.email = true)
-      : (currentErrors.email = false);
-    // validate email
-    !isEmail.test(input.email)
-      ? (currentErrors.invalidEmail = true)
-      : (currentErrors.invalidEmail = false);
-    // check that service has been checked
-    input.service === ''
-      ? (currentErrors.service = true)
-      : (currentErrors.service = false);
-    // check if message is empty
-    input.message === ''
-      ? (currentErrors.message = true)
-      : (currentErrors.message = false);
-
-    // add errors to state
-    setErrors({ ...errors, ...currentErrors });
-    console.log('errors', errors);
-    console.log('values', input);
+  function onFinishFailed(errorInfo) {
+    console.log('failed', errorInfo);
   }
 
   return (
-    <section id="contact" style={{ backgroundColor: '#ffecd1' }}>
+    <section style={{ backgroundColor: '#ffecd1' }}>
       <h1
         className="title"
         style={{
@@ -91,78 +25,73 @@ export default function Contact() {
       >
         Contact Mike
       </h1>
-      <form
+      <div
         style={{
           margin: '50px 15vw',
           padding: '40px',
           border: '5px solid #15616d'
         }}
       >
-        <Input
-          style={{ marginBottom: '20px' }}
-          name="name"
-          status={errors.name && 'error'}
-          size="large"
-          placeholder="Name*"
-          onChange={handleChange}
-        />
-        <Input
-          style={{ marginBottom: '20px' }}
-          name="email"
-          size="large"
-          placeholder="Email*"
-          onChange={handleChange}
-        />
-        <Input
-          style={{ marginBottom: '20px' }}
-          name="phone"
-          size="large"
-          placeholder="Phone"
-          onChange={handleChange}
-        />
-        <h2 style={{ marginBottom: '20px' }}>
-          What service are you looking for?*
-        </h2>
-        <div
-          style={{
-            marginBottom: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start'
-          }}
+        <Form
+          name="contact-form"
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          layout="vertical"
+          className="text"
         >
-          <Checkbox
-            onChange={handleCheck}
-            checked={checkValue.performer}
-            name="performer"
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: 'Please provide your name' }]}
           >
-            Performer for an event
-          </Checkbox>
-          <Checkbox
-            name="lessons"
-            checked={checkValue.lessons}
-            style={{ marginLeft: 0 }}
-            onChange={handleCheck}
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: 'Please provide your email' },
+              {
+                pattern: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                message: 'Please enter a valid email address'
+              }
+            ]}
           >
-            Lessons
-          </Checkbox>
-          <Checkbox
-            name="other"
-            style={{ marginLeft: 0 }}
-            checked={checkValue.other}
-            onChange={handleCheck}
+            <Input />
+          </Form.Item>
+          <Form.Item label="Phone" name="phone">
+            <Input />
+          </Form.Item>
+          {/* <h2 style={{ marginBottom: '20px' }}>
+            What service are you looking for?
+          </h2> */}
+          <Form.Item
+            label="What service are you looking for?"
+            name="service"
+            rules={[{ required: true, message: 'Please select a service' }]}
           >
-            Other
-          </Checkbox>
-        </div>
-        <TextArea
-          style={{ marginBottom: '20px' }}
-          name="message"
-          placeholder="Message or Question*"
-          onChange={handleChange}
-        ></TextArea>
-        <Button onClick={handleSubmit}>Submit</Button>
-      </form>
+            <Radio.Group>
+              <Space direction="vertical">
+                <Radio value="performer">Performer for an event</Radio>
+                <Radio value="lessons">Lessons</Radio>
+                <Radio value="other">Other</Radio>
+              </Space>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            label="Message or Question"
+            name="message"
+            rules={[
+              { required: true, message: 'Please leave a message or question' }
+            ]}
+          >
+            <TextArea />
+          </Form.Item>
+          <Form.Item>
+            <Button htmlType="submit">Submit</Button>
+          </Form.Item>
+        </Form>
+      </div>
     </section>
   );
 }
