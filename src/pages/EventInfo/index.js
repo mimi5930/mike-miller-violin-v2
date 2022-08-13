@@ -52,12 +52,17 @@ export default function EventInfo() {
     } else getEventData();
   }, []);
 
+  function determineImg(eventTitle) {
+    if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
+    else return 'https://dummyimage.com/500X400.png';
+  }
+
   if (isLoading) return <Skeleton active style={{ padding: '50px' }} />;
 
   if (error) return <div>Event not found!</div>;
 
   return (
-    <div>
+    <div style={{ height: 'calc(100vh - 100px)', backgroundColor: '#ffecd1' }}>
       <h1 style={{ fontSize: 80, textAlign: 'center', marginBottom: 5 }}>
         {eventData.summary}
       </h1>
@@ -67,17 +72,17 @@ export default function EventInfo() {
       <div
         style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}
       >
-        <a
-          href={`https://google.com/maps/search/${eventData.location.replaceAll(
-            ' ',
-            '+'
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="event-location"
-        >
-          {eventData.location}
-        </a>
+        <p style={{ fontSize: 30 }}>
+          {eventData.location}&nbsp;
+          <a
+            href={`https://maps.google.com/?q=${eventData.location}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-location"
+          >
+            (map)
+          </a>
+        </p>
       </div>
       <div
         style={{
@@ -121,10 +126,7 @@ export default function EventInfo() {
               )}
           </div>
         </div>
-        <img
-          src="https://dummyimage.com/500x400.png"
-          alt="The event logo"
-        ></img>
+        <img src={determineImg(eventData.summary)} alt="The event logo"></img>
       </div>
       <div></div>
     </div>

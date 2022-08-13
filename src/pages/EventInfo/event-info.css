@@ -1,10 +1,10 @@
 .event-location {
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
-  color: black;
+  color: gray;
+  transition: all 0.3s;
 }
 
 .event-location:hover {
-  text-decoration: underline;
   color: black;
 }
