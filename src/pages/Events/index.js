@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Event from '../../components/Event';
-import { format } from 'date-fns';
 import { Card, Divider, Skeleton } from 'antd';
 import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
@@ -75,7 +74,7 @@ export default function Events() {
               key={event.id}
               id={event.id}
               title={event.summary}
-              time={format(new Date(event.start.dateTime), 'EEEE MMM d, p')}
+              time={event.start.dateTime}
               location={event.location}
               smallScreen={smallScreen}
             />
