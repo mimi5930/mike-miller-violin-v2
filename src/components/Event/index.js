@@ -1,5 +1,6 @@
 import { Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 import './event.css';
 
 const styles = {
@@ -51,11 +52,16 @@ const styles = {
 export default function Event({ id, title, time, location, smallScreen }) {
   const navigate = useNavigate();
 
+  function determineImg(eventTitle) {
+    if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
+    else return 'https://dummyimage.com/500X400.png';
+  }
+
   return (
     <div style={{ marginRight: 'auto', marginLeft: 'auto' }}>
       <Card
         style={styles.card}
-        onClick={() => smallScreen && navigate(`/events/${id}`)}
+        // onClick={() => smallScreen && navigate(`/events/${id}`)}
       >
         <div
           style={
@@ -65,11 +71,7 @@ export default function Event({ id, title, time, location, smallScreen }) {
           }
         >
           <img
-            src={
-              title.includes('SCVSO')
-                ? require('../../images/SCVSO.webp')
-                : 'https://dummyimage.com/500X400.png'
-            }
+            src={determineImg(title)}
             alt="A logo for the event"
             style={smallScreen ? styles.mobileImage : styles.image}
           ></img>
@@ -89,7 +91,9 @@ export default function Event({ id, title, time, location, smallScreen }) {
             >
               {title}
             </h2>
-            <p style={styles.eventTime}>{time}</p>
+            <p style={styles.eventTime}>
+              {format(new Date(time), 'EEEE MMM d, p')}
+            </p>
             <p style={styles.eventLocation}>{location}</p>
           </div>
         </div>
