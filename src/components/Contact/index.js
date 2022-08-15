@@ -15,7 +15,6 @@ export default function Contact() {
   return (
     <section style={{ backgroundColor: '#ffecd1' }}>
       <h1
-        className="title"
         style={{
           color: '#15616d',
           fontSize: '50px',

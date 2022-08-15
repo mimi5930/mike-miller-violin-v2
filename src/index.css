@@ -1,14 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Sawarabi+Mincho&family=Rock+Salt&display=swap');
 
 :root {
   --main-font: 'IBM Plex Serif', serif;
   --title-font: 'Sawarabi Mincho', sans-serif;
+  --palette-maroon: rgb(120, 41, 15);
+}
+
+/* assign fonts */
+
+.main-logo {
+  font-family: 'Rock Salt', cursive;
+  color: var(--palette-maroon);
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 30px;
+  width: 300px;
+}
+
+.main-logo:hover {
+  color: black;
+}
+
+h1,
+h2 {
+  font-family: var(--title-font);
+}
+
+p {
+  font-family: var(--main-font);
 }
 
 .text {
   font-family: var(--main-font);
-}
-
-.title {
-  font-family: var(--title-font);
 }

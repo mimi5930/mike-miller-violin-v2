@@ -51,9 +51,7 @@ export default function Bio() {
         }
       ></div>
       <div style={{ backgroundColor: '#ffecd1' }}>
-        <h1 className="title" style={styles.title}>
-          Biography
-        </h1>
+        <h1 style={styles.title}>Biography</h1>
         <Divider></Divider>
         <p className="text" style={{ fontSize: '20px', padding: '30px' }}>
           Mike Miller has always felt inspired to teach and perform. These

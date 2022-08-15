@@ -20,14 +20,6 @@ const styles = {
     alignItems: 'center',
     height: '100px'
   },
-  logo: {
-    color: '#15616d',
-    marginTop: 'auto',
-    marginBottom: 'auto',
-    fontSize: '30px',
-
-    width: '200px'
-  },
   nav: {
     display: 'flex',
     flexDirection: 'row',
@@ -55,7 +47,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     marginTop: 8,
-    width: '200px'
+    width: '300px'
   },
   mobileNavContainer: {
     height: '100%',
@@ -134,19 +126,14 @@ export default function Navbar() {
   if (!smallScreen) {
     return (
       <Header style={styles.header}>
-        <Link
-          to={'/'}
-          className="title"
-          style={styles.logo}
-          onClick={() => setCurrentPage('')}
-        >
+        <Link to={'/'} className="main-logo" onClick={() => setCurrentPage('')}>
           Mike Miller
         </Link>
         <nav style={styles.nav}>
           {navItems.map(item => {
             return (
               <p
-                className="text nav-text"
+                className="nav-text"
                 key={item.key}
                 style={
                   currentPage === item.nav
@@ -190,12 +177,7 @@ export default function Navbar() {
   return (
     <>
       <Header style={styles.header}>
-        <Link
-          to={'/'}
-          className="title"
-          style={styles.logo}
-          onClick={() => setCurrentPage('')}
-        >
+        <Link to={'/'} className="main-logo" onClick={() => setCurrentPage('')}>
           Mike Miller
         </Link>
         <Button
