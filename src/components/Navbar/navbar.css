@@ -5,6 +5,10 @@
   transition: all 0.3s;
 }
 
+.nav-link {
+  transition: all 0.3s;
+}
+
 .ant-btn.ant-btn-background-ghost {
   color: black;
   border-color: black;

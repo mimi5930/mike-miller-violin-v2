@@ -35,7 +35,8 @@ const styles = {
   },
   icon: {
     fontSize: '30px',
-    marginRight: '10px',
+    marginRight: '5px',
+    marginLeft: '5px',
     color: '#78290f'
   },
   iconMobile: {
@@ -46,8 +47,10 @@ const styles = {
   linkContainer: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'flex-end',
     marginTop: 8,
-    width: '300px'
+    width: '300px',
+    marginRight: '0px'
   },
   mobileNavContainer: {
     height: '100%',
@@ -71,10 +74,12 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
+  // state declarations
   const [currentPage, setCurrentPage] = useState(
     window.location.pathname.slice(1) || ''
   );
   const [drawer, setDrawer] = useState(false);
+  const [navHover, setNavHover] = useState(null);
 
   const navItems = [
     { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
@@ -122,6 +127,13 @@ export default function Navbar() {
     setDrawer(false);
   }
 
+  function handleIconStyle(linkName) {
+    if (navHover === 'blank') return { opacity: '100%' };
+    else if (navHover !== linkName) return { opacity: '30%' };
+    else if (navHover === linkName) return { opacity: '100%' };
+    else return '';
+  }
+
   // desktop display
   if (!smallScreen) {
     return (
@@ -161,8 +173,13 @@ export default function Navbar() {
               <a
                 href={link.href}
                 key={link.name}
+                id={link.name}
+                className="nav-link"
+                style={handleIconStyle(link.name)}
                 target="_blank"
                 rel="noopener noreferrer"
+                onMouseEnter={event => setNavHover(event.target.id)}
+                onMouseLeave={() => setNavHover('blank')}
               >
                 {link.icon}
               </a>
