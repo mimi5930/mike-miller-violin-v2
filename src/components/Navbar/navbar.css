@@ -1,9 +1,10 @@
 .nav-text {
   color: black;
+  font-family: var(--title-font);
 }
 
 .nav-text:hover {
-  color: #78290f;
+  color: var(--palette-maroon);
   /* text-decoration: underline; */
   cursor: pointer;
   transition: all 0.3s;
@@ -21,6 +22,6 @@
 .ant-btn.ant-btn-background-ghost:focus,
 .ant-btn.ant-btn-background-ghost:hover {
   color: white;
-  border-color: #78290f;
-  background-color: #78290f;
+  border-color: var(--palette-maroon);
+  background-color: var(--palette-maroon);
 }

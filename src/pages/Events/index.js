@@ -11,14 +11,14 @@ import { setEvents, completeLoading } from './eventsSlice';
 const styles = {
   skeletonContainer: {
     minHeight: 'calc(100vh - 100px)',
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     display: 'flex',
     justifyContent: 'center'
   },
   skeletonCard: { width: '72vw', height: '450px', margin: 10 },
   skeleton: { padding: '50px' },
   page: {
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     display: 'flex',
     flexDirection: 'column'
   }

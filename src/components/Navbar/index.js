@@ -16,14 +16,14 @@ const styles = {
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     alignItems: 'center',
     height: '100px'
   },
   nav: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     color: 'black',
     alignItems: 'center',
     fontSize: '18px'
@@ -37,7 +37,7 @@ const styles = {
     fontSize: '30px',
     marginRight: '5px',
     marginLeft: '5px',
-    color: '#78290f'
+    color: 'var(--palette-maroon)'
   },
   iconMobile: {
     fontSize: '30px',
@@ -148,7 +148,7 @@ export default function Navbar() {
                 key={item.key}
                 style={
                   currentPage === item.nav
-                    ? { ...styles.navItem, color: '#78290f' }
+                    ? { ...styles.navItem, color: 'var(--palette-maroon)' }
                     : styles.navItem
                 }
                 onClick={() => handleNavClick(item.nav)}

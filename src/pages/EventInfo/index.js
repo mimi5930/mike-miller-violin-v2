@@ -62,7 +62,12 @@ export default function EventInfo() {
   if (error) return <div>Event not found!</div>;
 
   return (
-    <div style={{ height: 'calc(100vh - 100px)', backgroundColor: '#ffecd1' }}>
+    <div
+      style={{
+        height: 'calc(100vh - 100px)',
+        backgroundColor: 'var(--background-color)'
+      }}
+    >
       <h1 style={{ fontSize: 80, textAlign: 'center', marginBottom: 5 }}>
         {eventData.summary}
       </h1>

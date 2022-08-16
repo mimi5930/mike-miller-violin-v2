@@ -13,7 +13,7 @@ export default function Contact() {
   }
 
   return (
-    <section style={{ backgroundColor: '#ffecd1' }}>
+    <section style={{ backgroundColor: 'var(--background-color)' }}>
       <h1
         style={{
           color: '#15616d',

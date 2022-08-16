@@ -5,13 +5,13 @@ import { useMediaQuery } from 'react-responsive';
 
 const styles = {
   sectionStyle: {
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     height: 'calc(100vh - 100px)',
     display: 'flex',
     alignItems: 'center'
   },
   smallSectionStyle: {
-    backgroundColor: '#ffecd1',
+    backgroundColor: 'var(--background-color)',
     height: 'calc(100vh - 100px)',
     display: 'flex',
     flexDirection: 'column',
@@ -50,7 +50,7 @@ export default function Bio() {
             : { ...styles.imageContainer, minWidth: '60vw', minHeight: '60vw' }
         }
       ></div>
-      <div style={{ backgroundColor: '#ffecd1' }}>
+      <div style={{ backgroundColor: 'var(--background-color)' }}>
         <h1 style={styles.title}>Biography</h1>
         <Divider></Divider>
         <p className="text" style={{ fontSize: '20px', padding: '30px' }}>
@@ -81,7 +81,7 @@ export default function Bio() {
         <div style={{ padding: '0px 30px 30px' }}>
           <Button
             icon={<DownOutlined />}
-            style={{ backgroundColor: '#78290f', color: 'white' }}
+            style={{ backgroundColor: 'var(--palette-maroon)', color: 'white' }}
           >
             Mr. Miller's Resume
           </Button>
