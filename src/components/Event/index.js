@@ -1,5 +1,5 @@
 import { Card } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import './event.css';
 
@@ -54,6 +54,8 @@ export default function Event({ id, title, time, location, smallScreen }) {
 
   function determineImg(eventTitle) {
     if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
+    else if (eventTitle.includes('FMSO'))
+      return 'https://dummyimage.com/500X400.png';
     else return 'https://dummyimage.com/500X400.png';
   }
 
@@ -80,17 +82,17 @@ export default function Event({ id, title, time, location, smallScreen }) {
               smallScreen ? styles.mobileInfoContainer : styles.infoContainer
             }
           >
-            <h2
+            <Link
               className="event-title"
               style={
                 smallScreen
                   ? { ...styles.eventTitle, textAlign: 'center' }
                   : styles.eventTitle
               }
-              onClick={() => navigate(`/events/${id}`)}
+              to={`/events/${id}`}
             >
               {title}
-            </h2>
+            </Link>
             <p style={styles.eventTime}>
               {format(new Date(time), 'EEEE MMM d, p')}
             </p>

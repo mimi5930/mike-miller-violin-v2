@@ -1,8 +1,10 @@
 .event-title {
   color: #15616d;
+  font-family: var(--title-font);
 }
 
 .event-title:hover {
   text-decoration: underline;
+  color: #15616d;
   cursor: pointer;
 }

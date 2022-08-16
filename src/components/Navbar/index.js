@@ -121,14 +121,12 @@ export default function Navbar() {
   function handleNavClick(nav) {
     // update page state
     setCurrentPage(nav);
-    // navigate to new page;
-    navigate(`/${nav}`);
     // close drawer if open
     setDrawer(false);
   }
 
   function handleIconStyle(linkName) {
-    if (navHover === 'blank') return { opacity: '100%' };
+    if (!navHover) return { opacity: '100%' };
     else if (navHover !== linkName) return { opacity: '30%' };
     else if (navHover === linkName) return { opacity: '100%' };
     else return '';
@@ -144,7 +142,8 @@ export default function Navbar() {
         <nav style={styles.nav}>
           {navItems.map(item => {
             return (
-              <p
+              <Link
+                to={`/${item.nav}`}
                 className="nav-text"
                 key={item.key}
                 style={
@@ -155,7 +154,7 @@ export default function Navbar() {
                 onClick={() => handleNavClick(item.nav)}
               >
                 {item.label}
-              </p>
+              </Link>
             );
           })}
           <Button
@@ -179,7 +178,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={event => setNavHover(event.target.id)}
-                onMouseLeave={() => setNavHover('blank')}
+                onMouseLeave={() => setNavHover(null)}
               >
                 {link.icon}
               </a>
