@@ -61,9 +61,6 @@ export default function Contact() {
           <Form.Item label="Phone" name="phone">
             <Input />
           </Form.Item>
-          {/* <h2 style={{ marginBottom: '20px' }}>
-            What service are you looking for?
-          </h2> */}
           <Form.Item
             label="What service are you looking for?"
             name="service"
