@@ -54,7 +54,7 @@ export default function Events() {
         style={{
           textAlign: 'center',
           fontSize: '80px',
-          color: '#15616d',
+          color: 'var(--title-color)',
           marginBottom: 0
         }}
       >

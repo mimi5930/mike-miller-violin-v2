@@ -3,7 +3,7 @@ import React from 'react';
 
 const { TextArea } = Input;
 
-export default function Contact() {
+export default function Contact({ reference }) {
   function onFinish(values) {
     console.log('success', values);
   }
@@ -13,10 +13,13 @@ export default function Contact() {
   }
 
   return (
-    <section style={{ backgroundColor: 'var(--background-color)' }}>
+    <section
+      ref={reference}
+      style={{ backgroundColor: 'var(--background-color)' }}
+    >
       <h1
         style={{
-          color: '#15616d',
+          color: 'var(--title-color)',
           fontSize: '50px',
           textAlign: 'center',
           margin: '50px'
@@ -28,7 +31,7 @@ export default function Contact() {
         style={{
           margin: '50px 15vw',
           padding: '40px',
-          border: '5px solid #15616d'
+          border: '5px solid var(--title-color)'
         }}
       >
         <Form
