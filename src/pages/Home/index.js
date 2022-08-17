@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Contact from '../../components/Contact';
 import { useMediaQuery } from 'react-responsive';
+import { useHref, useLocation } from 'react-router-dom';
+// import { Anchor } from 'antd';
 
 const styles = {
   heroContainer: {
@@ -25,7 +27,7 @@ const styles = {
     borderBottom: '10px solid #ff7d00'
   },
   heroText: {
-    border: '5px solid #15616d',
+    border: '5px solid var(--title-color)',
     borderRadius: '15px',
     width: '50vw',
     color: 'black',
@@ -37,8 +39,8 @@ const styles = {
     padding: '30px'
   },
   smallHeroText: {
-    borderTop: '5px solid #15616d',
-    borderBottom: '5px solid #15616d',
+    borderTop: '5px solid var(--title-color)',
+    borderBottom: '5px solid var(--title-color)',
     color: 'black',
     fontSize: '30px',
     position: 'relative',
@@ -50,6 +52,15 @@ const styles = {
 
 export default function Home() {
   const smallScreen = useMediaQuery({ query: '(max-width: 1250px' });
+
+  const contactElement = useRef();
+  const href = useLocation();
+
+  useEffect(() => {
+    if (href.hash === '#contact') {
+      contactElement.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [href]);
 
   return (
     <>
@@ -77,15 +88,15 @@ export default function Home() {
         </div>
       </section>
       {smallScreen && (
-        <di style={{ backgroundColor: 'rgba(255, 236, 209)' }}>
+        <div style={{ backgroundColor: 'rgba(255, 236, 209)' }}>
           <p className="text" style={styles.smallHeroText}>
             Mike Miller is a violin teacher and performer in Woodbury,
             Minnesota. He has a strong passion for providing audiences with
             authentic performances and fostering students' love of music.
           </p>
-        </di>
+        </div>
       )}
-      <Contact />
+      <Contact reference={contactElement} />
     </>
   );
 }
