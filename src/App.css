@@ -40,13 +40,24 @@
 }
 
 .ant-radio-checked .ant-radio-inner {
-  border-color: var(--palette-maroon) !important ;
+  border-color: var(--title-color) !important ;
 }
 
 .ant-radio-checked .ant-radio-inner:after {
-  background-color: var(--palette-maroon);
+  background-color: var(--title-color);
 }
 
 .ant-radio:hover .ant-radio-inner {
-  border-color: var(--palette-maroon);
+  border-color: var(--title-color);
+}
+
+.ant-input:focus {
+  border-color: var(--title-color);
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 2px rgba(87, 168, 233, 0.2);
+  box-shadow: 0 0 0 2px rgba(87, 168, 233, 0.2);
+}
+
+.ant-input:hover {
+  border-color: var(--title-color);
 }
