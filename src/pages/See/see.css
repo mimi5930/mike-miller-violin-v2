@@ -1,0 +1,7 @@
+.img-container {
+  display: flex !important;
+  justify-content: center;
+  background-color: var(--border-color);
+  align-items: center;
+  height: 60vh;
+}
