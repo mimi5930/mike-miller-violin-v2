@@ -157,14 +157,11 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Button
-            ghost
-            className="contact-button"
-            color="#15616d"
-            onClick={() => navigate('/#contact')}
-          >
-            CONTACT
-          </Button>
+          <Link to={'/#contact'}>
+            <Button ghost className="contact-button">
+              CONTACT
+            </Button>
+          </Link>
         </nav>
         <div style={styles.linkContainer}>
           {linkItems.map(link => {
@@ -209,21 +206,34 @@ export default function Navbar() {
         onClose={() => setDrawer(!drawer)}
       >
         <div style={styles.mobileNavContainer}>
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             {navItems.map(item => {
               return (
-                <p
+                <Link
                   className="text nav-text"
                   key={item.key}
                   style={{
-                    fontSize: '30px'
+                    fontSize: '40px',
+                    marginBottom: '15px'
                   }}
                   onClick={() => handleNavClick(item.nav)}
+                  to={`/${item.nav}`}
                 >
                   {item.label}
-                </p>
+                </Link>
               );
             })}
+            <Link
+              className="text nav-text"
+              to="/#contact"
+              style={{
+                fontSize: '40px',
+                marginBottom: '15px'
+              }}
+              onClick={() => handleNavClick('')}
+            >
+              Contact
+            </Link>
           </div>
           <div style={styles.mobileLinkContainer}>
             {linkItems.map(link => {
