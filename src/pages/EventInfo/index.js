@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import parse from 'html-react-parser';
 import { format } from 'date-fns';
-import { Button, Skeleton } from 'antd';
-import { CalendarOutlined } from '@ant-design/icons';
+import { Button, Divider, Skeleton } from 'antd';
+import {
+  CalendarOutlined,
+  ClockCircleOutlined,
+  CompassOutlined,
+  LeftOutlined
+} from '@ant-design/icons';
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
 
@@ -14,6 +20,8 @@ export default function EventInfo() {
   // get the event's Id from params
   const params = useParams();
   let { eventId } = params;
+
+  const smallScreen = useMediaQuery({ query: '(max-width: 1250px)' });
 
   const eventsList = useSelector(state => state.events.value);
 
@@ -52,14 +60,41 @@ export default function EventInfo() {
     } else getEventData();
   }, []);
 
-  function determineImg(eventTitle) {
-    if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
-    else return 'https://dummyimage.com/500X400.png';
-  }
+  if (isLoading)
+    return (
+      <div
+        style={{
+          height: 'calc(100vh - 100px)',
+          backgroundColor: 'var(--background-color)'
+        }}
+      >
+        <div style={{ margin: 40 }}>
+          <Skeleton active style={{ padding: '50px' }} />
+        </div>
+      </div>
+    );
 
-  if (isLoading) return <Skeleton active style={{ padding: '50px' }} />;
-
-  if (error) return <div>Event not found!</div>;
+  if (error)
+    return (
+      <div
+        style={{
+          height: 'calc(100vh - 100px)',
+          backgroundColor: 'var(--background-color)'
+        }}
+      >
+        <h1
+          style={{
+            fontSize: 60,
+            textAlign: 'center',
+            marginTop: 15,
+            marginBottom: 5,
+            color: 'var(--title-color)'
+          }}
+        >
+          Event Not Found
+        </h1>
+      </div>
+    );
 
   return (
     <div
@@ -68,72 +103,86 @@ export default function EventInfo() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1 style={{ fontSize: 80, textAlign: 'center', marginBottom: 5 }}>
+      <h1
+        style={{
+          fontSize: 60,
+          textAlign: 'center',
+          marginBottom: 5,
+          color: 'var(--title-color)'
+        }}
+      >
         {eventData.summary}
       </h1>
-      <h2 style={{ fontSize: 30, textAlign: 'center' }}>
-        {format(new Date(eventData.start.dateTime), 'EEEE MMM d, p')}
-      </h2>
+      <Divider></Divider>
       <div
-        style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}
+        style={
+          !smallScreen
+            ? {
+                margin: '40px',
+                display: 'flex',
+                justifyContent: 'space-evenly'
+              }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }
+        }
       >
-        <p style={{ fontSize: 30 }}>
-          {eventData.location}&nbsp;
-          <a
-            href={`https://maps.google.com/?q=${eventData.location}`}
+        <div style={!smallScreen ? { maxWidth: '30vw' } : { maxWidth: '80vw' }}>
+          <Link to="/events">
+            <Button
+              type="primary"
+              icon={<LeftOutlined />}
+              style={{ marginBottom: 10 }}
+            >
+              Back to All Events
+            </Button>
+          </Link>
+
+          <h2 style={{ fontSize: 20 }}>
+            <ClockCircleOutlined />
+            &nbsp;
+            {format(new Date(eventData.start.dateTime), 'EEEE MMM d yyyy, p')}
+          </h2>
+          <h2 style={{ fontSize: 20 }}>
+            <CompassOutlined />
+            &nbsp;
+            {eventData.location}&nbsp;
+            <a
+              href={`https://maps.google.com/?q=${eventData.location}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="event-location"
+            >
+              (map)
+            </a>
+          </h2>
+          <Button
+            type="primary"
             target="_blank"
             rel="noopener noreferrer"
-            className="event-location"
+            href={configureHref(eventData.htmlLink, eventData.organizer.email)}
+            icon={<CalendarOutlined />}
           >
-            (map)
-          </a>
-        </p>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center'
-        }}
-      >
-        <Button
-          target="_blank"
-          rel="noopener noreferrer"
-          href={configureHref(eventData.htmlLink, eventData.organizer.email)}
-          icon={<CalendarOutlined />}
-        >
-          Add to Google Calendar
-        </Button>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          margin: '30px'
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'start',
-            margin: '30px'
-          }}
-        >
-          <h2 style={{ fontSize: 40 }}>Description</h2>
-          <div style={{ fontSize: 20, maxWidth: '45vw' }}>
-            {eventData.description &&
-              parse(
-                eventData.description
-                  .replaceAll('<html-blob>', '')
-                  .replaceAll('</html-blob>', '')
-              )}
-          </div>
+            Add to Google Calendar
+          </Button>
         </div>
-        <img src={determineImg(eventData.summary)} alt="The event logo"></img>
+        <div
+          style={
+            !smallScreen
+              ? { maxWidth: '30vw', fontSize: 15 }
+              : { maxWidth: '80vw', fontSize: 15, marginTop: 20 }
+          }
+        >
+          {eventData.description &&
+            parse(
+              eventData.description
+                .replaceAll('<html-blob>', '')
+                .replaceAll('</html-blob>', '')
+            )}
+        </div>
       </div>
-      <div></div>
     </div>
   );
 }

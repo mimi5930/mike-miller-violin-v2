@@ -1,3 +1,52 @@
+.ant-btn-background-ghost {
+  color: black !important;
+  border-color: black !important;
+}
+
+.ant-btn-background-ghost:focus,
+.ant-btn-background-ghost:hover {
+  color: white !important;
+  border-color: var(--palette-maroon) !important;
+  background-color: var(--palette-maroon) !important;
+}
+
 .ant-btn-primary {
+  color: white !important;
+  background-color: var(--palette-maroon) !important;
+  border-color: var(--palette-maroon) !important;
+}
+
+.ant-btn-primary:focus,
+.ant-btn-primary:hover {
+  background-color: rgb(160, 60, 27) !important;
+  border-color: rgb(160, 60, 27) !important;
+}
+
+.ant-btn-icon-only {
+  color: white !important;
+  background-color: var(--palette-maroon) !important;
+  border-color: var(--palette-maroon) !important;
+}
+
+.ant-btn-icon-only:hover,
+.ant-btn-icon-only:focus {
+  background-color: rgb(160, 60, 27) !important;
+  border-color: rgb(160, 60, 27) !important;
+}
+
+.ant-form-item-label
+  label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
+  color: var(--palette-maroon);
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--palette-maroon) !important ;
+}
+
+.ant-radio-checked .ant-radio-inner:after {
   background-color: var(--palette-maroon);
+}
+
+.ant-radio:hover .ant-radio-inner {
+  border-color: var(--palette-maroon);
 }

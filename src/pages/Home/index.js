@@ -51,7 +51,7 @@ const styles = {
 };
 
 export default function Home() {
-  const smallScreen = useMediaQuery({ query: '(max-width: 1250px' });
+  const smallScreen = useMediaQuery({ query: '(max-width: 1250px)' });
 
   const contactElement = useRef();
   const href = useLocation();

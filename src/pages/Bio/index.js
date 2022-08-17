@@ -79,10 +79,7 @@ export default function Bio() {
           studio and continue performing in the Twin Cities.
         </p>
         <div style={{ padding: '0px 30px 30px' }}>
-          <Button
-            icon={<DownOutlined />}
-            style={{ backgroundColor: 'var(--palette-maroon)', color: 'white' }}
-          >
+          <Button icon={<DownOutlined />} type="primary">
             Mr. Miller's Resume
           </Button>
         </div>

@@ -8,7 +8,7 @@ import {
   InstagramFilled,
   MenuOutlined
 } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 import { useMediaQuery } from 'react-responsive';
 
@@ -71,8 +71,6 @@ export default function Navbar() {
   const { Header } = Layout;
 
   const smallScreen = useMediaQuery({ query: '(max-width: 1080px)' });
-
-  const navigate = useNavigate();
 
   // state declarations
   const [currentPage, setCurrentPage] = useState(

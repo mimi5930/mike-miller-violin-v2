@@ -1,5 +1,5 @@
-import './App.css';
 import 'antd/dist/antd.min.css';
+import './App.css';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar';
 import Events from './pages/Events';

@@ -13,15 +13,3 @@
 .nav-link {
   transition: all 0.3s;
 }
-
-.ant-btn.ant-btn-background-ghost {
-  color: black;
-  border-color: black;
-}
-
-.ant-btn.ant-btn-background-ghost:focus,
-.ant-btn.ant-btn-background-ghost:hover {
-  color: white;
-  border-color: var(--palette-maroon);
-  background-color: var(--palette-maroon);
-}
