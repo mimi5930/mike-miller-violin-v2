@@ -1,5 +1,5 @@
 import { Card } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import './event.css';
 
@@ -50,8 +50,6 @@ const styles = {
 };
 
 export default function Event({ id, title, time, location, smallScreen }) {
-  const navigate = useNavigate();
-
   function determineImg(eventTitle) {
     if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
     else if (eventTitle.includes('FMSO'))

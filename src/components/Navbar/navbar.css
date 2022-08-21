@@ -7,7 +7,6 @@
   color: var(--palette-maroon);
   /* text-decoration: underline; */
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .nav-link {

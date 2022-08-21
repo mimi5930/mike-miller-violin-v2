@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Contact from '../../components/Contact';
 import { useMediaQuery } from 'react-responsive';
-import { useHref, useLocation } from 'react-router-dom';
-// import { Anchor } from 'antd';
+import { useLocation } from 'react-router-dom';
 
 const styles = {
   heroContainer: {

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Carousel, Image, Button } from 'antd';
+import { Carousel, Image, Button, Divider } from 'antd';
 import './see.css';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
@@ -60,9 +60,10 @@ export default function See() {
           marginBottom: 0
         }}
       >
-        See
+        Photo Gallery
       </h1>
-      <div style={{ margin: '10px 10vw' }}>
+      <Divider></Divider>
+      <div style={{ margin: '50px 30vw 20px' }}>
         <Carousel ref={carousel}>
           {images.map(image => {
             return (

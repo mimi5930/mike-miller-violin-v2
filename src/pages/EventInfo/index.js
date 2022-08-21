@@ -141,14 +141,11 @@ export default function EventInfo() {
           </Link>
 
           <h2 style={{ fontSize: 20 }}>
-            <ClockCircleOutlined />
-            &nbsp;
+            <ClockCircleOutlined />{' '}
             {format(new Date(eventData.start.dateTime), 'EEEE MMM d yyyy, p')}
           </h2>
           <h2 style={{ fontSize: 20 }}>
-            <CompassOutlined />
-            &nbsp;
-            {eventData.location}&nbsp;
+            <CompassOutlined /> {eventData.location}{' '}
             <a
               href={`https://maps.google.com/?q=${eventData.location}`}
               target="_blank"
