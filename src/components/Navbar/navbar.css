@@ -1,12 +1,46 @@
+.main-logo {
+  font-family: 'Rock Salt', cursive;
+  color: var(--palette-maroon);
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 30px;
+  width: 300px;
+  transition: all 0.3s;
+}
+
+.main-logo:hover {
+  color: var(--palette-maroon);
+  text-shadow: 2px 2px 7px black;
+}
+
 .nav-text {
   color: black;
   font-family: var(--title-font);
+  transition: all 0.3s;
 }
 
 .nav-text:hover {
   color: var(--palette-maroon);
-  /* text-decoration: underline; */
-  cursor: pointer;
+}
+
+.link-container {
+  visibility: hidden;
+}
+
+.link-container > * {
+  visibility: visible;
+}
+
+.link-container > * {
+  transition: all 0.3s;
+}
+
+.link-container:hover > * {
+  opacity: 30%;
+}
+
+.link-container > *:hover {
+  opacity: 100%;
 }
 
 .nav-link {

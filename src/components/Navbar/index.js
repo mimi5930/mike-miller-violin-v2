@@ -77,7 +77,6 @@ export default function Navbar() {
     window.location.pathname.slice(1) || ''
   );
   const [drawer, setDrawer] = useState(false);
-  const [navHover, setNavHover] = useState(null);
 
   const navItems = [
     { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
@@ -123,13 +122,6 @@ export default function Navbar() {
     setDrawer(false);
   }
 
-  function handleIconStyle(linkName) {
-    if (!navHover) return { opacity: '100%' };
-    else if (navHover !== linkName) return { opacity: '30%' };
-    else if (navHover === linkName) return { opacity: '100%' };
-    else return '';
-  }
-
   // desktop display
   if (!smallScreen) {
     return (
@@ -161,7 +153,7 @@ export default function Navbar() {
             </Button>
           </Link>
         </nav>
-        <div style={styles.linkContainer}>
+        <div style={styles.linkContainer} className="link-container">
           {linkItems.map(link => {
             return (
               <a
@@ -169,11 +161,8 @@ export default function Navbar() {
                 key={link.name}
                 id={link.name}
                 className="nav-link"
-                style={handleIconStyle(link.name)}
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={event => setNavHover(event.target.id)}
-                onMouseLeave={() => setNavHover(null)}
               >
                 {link.icon}
               </a>

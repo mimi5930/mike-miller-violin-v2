@@ -1,0 +1,28 @@
+.collection-item {
+  position: relative;
+  margin: 20px;
+  height: 40vh;
+  width: 400px;
+  background-color: var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.collection-item::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s;
+}
+
+.collection-item:hover::before {
+  background-color: rgba(0, 0, 0, 0.5);
+}

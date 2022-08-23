@@ -23,7 +23,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="bio" element={<Bio />} />
             <Route path="listen" element={<Listen />} />
-            <Route path="see" element={<See />} />
+            <Route path="see" element={<See />}>
+              <Route path=":collectionName" />
+            </Route>
             <Route path="lessons" element={<Lessons />} />
             <Route path="events" element={<Events />} />
             <Route path="events/:eventId" element={<EventInfo />} />
