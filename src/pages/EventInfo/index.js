@@ -18,8 +18,7 @@ import { useSelector } from 'react-redux/es/exports';
 
 export default function EventInfo() {
   // get the event's Id from params
-  const params = useParams();
-  let { eventId } = params;
+  const { eventId } = useParams();
 
   const smallScreen = useMediaQuery({ query: '(max-width: 1250px)' });
 
@@ -99,7 +98,7 @@ export default function EventInfo() {
   return (
     <div
       style={{
-        height: 'calc(100vh - 100px)',
+        minHeight: 'calc(100vh - 100px)',
         backgroundColor: 'var(--background-color)'
       }}
     >
@@ -123,6 +122,7 @@ export default function EventInfo() {
                 justifyContent: 'space-evenly'
               }
             : {
+                marginBottom: '40px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'

@@ -1,7 +1,7 @@
 .event-location {
   font-size: 20px;
   text-decoration: none;
-  color: gray;
+  color: var(--palette-maroon);
   transition: all 0.3s;
 }
 

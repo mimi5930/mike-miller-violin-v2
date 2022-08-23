@@ -9,8 +9,9 @@ const styles = {
     width: '100%',
     backgroundColor: '#010101',
     backgroundImage: `url(${require('../../images/hero.jpg')})`,
-    backgroundPosition: 'center top',
-    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
     borderTop: '10px solid #ff7d00',
     borderBottom: '10px solid #ff7d00'
   },

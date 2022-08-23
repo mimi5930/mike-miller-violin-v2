@@ -25,8 +25,8 @@ const styles = {
   },
   image: {
     backgroundColor: 'white',
-    height: '400px',
-    width: '500px'
+    maxHeight: '400px',
+    maxWidth: '400px'
   },
   mobileImage: {
     backgroundColor: 'white',
@@ -53,16 +53,13 @@ export default function Event({ id, title, time, location, smallScreen }) {
   function determineImg(eventTitle) {
     if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
     else if (eventTitle.includes('FMSO'))
-      return 'https://dummyimage.com/500X400.png';
+      return require('../../images/fmso.png');
     else return 'https://dummyimage.com/500X400.png';
   }
 
   return (
     <div style={{ marginRight: 'auto', marginLeft: 'auto' }}>
-      <Card
-        style={styles.card}
-        // onClick={() => smallScreen && navigate(`/events/${id}`)}
-      >
+      <Card style={styles.card}>
         <div
           style={
             smallScreen

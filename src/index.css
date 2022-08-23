@@ -11,19 +11,6 @@
 
 /* assign fonts */
 
-.main-logo {
-  font-family: 'Rock Salt', cursive;
-  color: var(--palette-maroon);
-  margin-top: auto;
-  margin-bottom: auto;
-  font-size: 30px;
-  width: 300px;
-}
-
-.main-logo:hover {
-  color: black;
-}
-
 h1,
 h2 {
   font-family: var(--title-font);
