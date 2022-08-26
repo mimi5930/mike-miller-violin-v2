@@ -1,4 +1,4 @@
-import { Card, Divider } from 'antd';
+import { Divider } from 'antd';
 import React from 'react';
 
 export default function Lessons() {
@@ -17,11 +17,21 @@ export default function Lessons() {
           marginBottom: 0
         }}
       >
-        Lessons
+        Lessons with Mike
       </h1>
       <Divider></Divider>
-      <div>
-        <Card></Card>
+      <img src=""></img>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          margin: 20,
+          padding: 20
+        }}
+      >
+        <div>
+          <h2></h2>
+        </div>
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ export default function Listen() {
                 border: '5px solid #ff7d00',
                 boxShadow: '0px 0px 5px 0px black',
                 padding: 50,
-                margin: 30
+                margin: 50
               }
             : {
                 display: 'flex',
