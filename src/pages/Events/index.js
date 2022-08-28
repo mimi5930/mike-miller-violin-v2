@@ -50,16 +50,7 @@ export default function Events() {
 
   return (
     <div style={styles.page}>
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '80px',
-          color: 'var(--title-color)',
-          marginBottom: 0
-        }}
-      >
-        Upcoming Events
-      </h1>
+      <h1 className="page-title">Upcoming Events</h1>
       <Divider></Divider>
       {eventsLoading ? (
         <div style={styles.skeletonContainer}>

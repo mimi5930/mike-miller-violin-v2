@@ -68,12 +68,14 @@ export default function Home() {
         style={
           !smallScreen
             ? {
-                height: 'calc(100vh - 100px)'
+                height: 'calc(100vh - 100px)',
+                backgroundColor: 'var(--background-color)'
               }
             : { height: '30vh' }
         }
       >
         <div
+          className="fade-in"
           style={
             !smallScreen ? styles.heroContainer : styles.smallHeroContainer
           }

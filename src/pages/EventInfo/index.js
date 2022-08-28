@@ -67,7 +67,7 @@ export default function EventInfo() {
           backgroundColor: 'var(--background-color)'
         }}
       >
-        <div style={{ margin: 40 }}>
+        <div style={{ margin: '40px 80px' }}>
           <Skeleton active style={{ padding: '50px' }} />
         </div>
       </div>
@@ -102,82 +102,80 @@ export default function EventInfo() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1
-        style={{
-          fontSize: 60,
-          textAlign: 'center',
-          marginBottom: 5,
-          color: 'var(--title-color)'
-        }}
-      >
-        {eventData.summary}
-      </h1>
-      <Divider></Divider>
-      <div
-        style={
-          !smallScreen
-            ? {
-                margin: '40px',
-                display: 'flex',
-                justifyContent: 'space-evenly'
-              }
-            : {
-                marginBottom: '40px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-              }
-        }
-      >
-        <div style={!smallScreen ? { maxWidth: '30vw' } : { maxWidth: '80vw' }}>
-          <Link to="/events">
-            <Button
-              type="primary"
-              icon={<LeftOutlined />}
-              style={{ marginBottom: 10 }}
-            >
-              Back to All Events
-            </Button>
-          </Link>
-
-          <h2 style={{ fontSize: 20 }}>
-            <ClockCircleOutlined />{' '}
-            {format(new Date(eventData.start.dateTime), 'EEEE MMM d yyyy, p')}
-          </h2>
-          <h2 style={{ fontSize: 20 }}>
-            <CompassOutlined /> {eventData.location}{' '}
-            <a
-              href={`https://maps.google.com/?q=${eventData.location}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="event-location"
-            >
-              (map)
-            </a>
-          </h2>
-          <Button
-            type="primary"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={configureHref(eventData.htmlLink, eventData.organizer.email)}
-            icon={<CalendarOutlined />}
-          >
-            Add to Google Calendar
-          </Button>
-        </div>
+      <div className="fade-in">
+        <h1 className="page-title">{eventData.summary}</h1>
+        <Divider></Divider>
         <div
           style={
             !smallScreen
-              ? { maxWidth: '30vw', fontSize: 15 }
-              : { maxWidth: '80vw', fontSize: 15, marginTop: 20 }
+              ? {
+                  margin: '40px',
+                  display: 'flex',
+                  justifyContent: 'space-evenly'
+                }
+              : {
+                  marginBottom: '40px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
+                }
           }
         >
-          {eventData.description &&
-            parse(
-              eventData.description
-                .replaceAll('<html-blob>', '')
-                .replaceAll('</html-blob>', '')
-            )}
+          <div
+            style={!smallScreen ? { maxWidth: '30vw' } : { maxWidth: '80vw' }}
+          >
+            <Link to="/events">
+              <Button
+                type="primary"
+                icon={<LeftOutlined />}
+                style={{ marginBottom: 10 }}
+              >
+                Back to All Events
+              </Button>
+            </Link>
+
+            <h2 style={{ fontSize: 20 }}>
+              <ClockCircleOutlined />{' '}
+              {format(new Date(eventData.start.dateTime), 'EEEE MMM d yyyy, p')}
+            </h2>
+            <h2 style={{ fontSize: 20 }}>
+              <CompassOutlined /> {eventData.location}{' '}
+              <a
+                href={`https://maps.google.com/?q=${eventData.location}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="event-location"
+              >
+                (map)
+              </a>
+            </h2>
+            <Button
+              type="primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={configureHref(
+                eventData.htmlLink,
+                eventData.organizer.email
+              )}
+              icon={<CalendarOutlined />}
+            >
+              Add to Google Calendar
+            </Button>
+          </div>
+          <div
+            style={
+              !smallScreen
+                ? { maxWidth: '30vw', fontSize: 15 }
+                : { maxWidth: '80vw', fontSize: 15, marginTop: 20 }
+            }
+          >
+            {eventData.description &&
+              parse(
+                eventData.description
+                  .replaceAll('<html-blob>', '')
+                  .replaceAll('</html-blob>', '')
+              )}
+          </div>
         </div>
       </div>
     </div>

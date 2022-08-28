@@ -31,7 +31,7 @@ export default function ImageCarousel({
           }}
         >
           {`${text} `}
-          {href}
+          {href && href}
         </p>
         <Link to="/see">
           <Button type="primary" icon={<LeftOutlined />}>

@@ -12,16 +12,7 @@ export default function Listen() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '80px',
-          color: 'var(--title-color)',
-          marginBottom: 0
-        }}
-      >
-        Listen to Mike
-      </h1>
+      <h1 className="page-title">Listen to Mike</h1>
       <Divider></Divider>
       <div
         style={

@@ -9,16 +9,7 @@ export default function Lessons() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '80px',
-          color: 'var(--title-color)',
-          marginBottom: 0
-        }}
-      >
-        Lessons with Mike
-      </h1>
+      <h1 className="page-title">Lessons with Mike</h1>
       <Divider></Divider>
       <img src=""></img>
       <div

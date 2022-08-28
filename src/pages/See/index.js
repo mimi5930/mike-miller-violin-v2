@@ -4,47 +4,8 @@ import './see.css';
 import ImageCarousel from '../../components/ImageCarousel';
 import { useParams } from 'react-router-dom';
 import ImageCollection from '../../components/ImageCollection';
-
-const images = {
-  kenzieImages: [
-    {
-      name: 'BackViolin.jpg',
-      alt: 'Mike, with his back turned to the camera, playing in the bushes'
-    },
-    {
-      name: 'headshot.jpg',
-      alt: 'Mike smiling with his violin in hand, facing the camera'
-    },
-    {
-      name: 'upbowBow.jpg',
-      alt: 'Mike beginning an up bow'
-    },
-    {
-      name: 'violinUp.jpg',
-      alt: 'Mike bringing his violin up to play'
-    },
-    {
-      name: 'downbow.jpg',
-      alt: 'Mike holding his violin ready to play with the frog of his bow right in front of his face'
-    },
-    {
-      name: 'finale.jpg',
-      alt: "Mike's bow is flying off the string in a dramatic swoosh!"
-    },
-    {
-      name: 'sitting.jpg',
-      alt: 'Mike is sitting in a chair, holding his violin and smiling at the camera'
-    },
-    {
-      name: 'staring.jpg',
-      alt: 'Mike holds his violin looking in the distance'
-    },
-    {
-      name: 'pondering.jpg',
-      alt: 'Mike stares down the fingerboard of his instrument'
-    }
-  ]
-};
+import kenzieImages from './imageNames/kenzieImages.json';
+import dianeImages from './imageNames/dianeImages.json';
 
 const kenzieInfo = {
   authorFolder: 'kenzieImages',
@@ -54,8 +15,23 @@ const kenzieInfo = {
     <a href="https://www.instagram.com/kenzie_captures/">
       McKenzie's Instagram
     </a>
-  )
+  ),
+  images: kenzieImages,
+  displayName: 'BackViolin.jpg',
+  galleryDisplay: true
 };
+
+const dianeInfo = {
+  authorFolder: 'auntieDi',
+  title: 'Diane Hallen (2019)',
+  text: 'Diane Hallen is a fantastic photographer and school teacher in Hudson, WI.',
+  href: null,
+  images: dianeImages,
+  displayName: 'Mike4.jpg',
+  galleryDisplay: true
+};
+
+const collections = [kenzieInfo, dianeInfo];
 
 export default function See() {
   const { collectionName } = useParams();
@@ -66,10 +42,9 @@ export default function See() {
 
   useEffect(() => {
     if (collectionName === 'mckenzie-verhulst-2022') {
-      setCurrentGallery({
-        ...kenzieInfo,
-        ...{ images: images.kenzieImages, galleryDisplay: true }
-      });
+      setCurrentGallery(kenzieInfo);
+    } else if (collectionName === 'diane-hallen-2019') {
+      setCurrentGallery(dianeInfo);
     } else setCurrentGallery({ galleryDisplay: false });
   }, [collectionName]);
 
@@ -80,16 +55,7 @@ export default function See() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '80px',
-          color: 'var(--title-color)',
-          marginBottom: 0
-        }}
-      >
-        Media
-      </h1>
+      <h1 className="fade page-title">See Media</h1>
       <Divider></Divider>
 
       {currentGallery.galleryDisplay ? (

@@ -12,7 +12,8 @@
 /* assign fonts */
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--title-font);
 }
 
@@ -22,4 +23,29 @@ p {
 
 .text {
   font-family: var(--main-font);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 60px;
+  color: var(--title-color);
+  margin-bottom: 0px;
+}
+
+.fade-in {
+  animation: fade-in 300ms ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+    /* transform: translateX(-20%); */
+    opacity: 0;
+  }
+  /* 70% {
+    opacity: 0.3;
+  } */
+  100% {
+    /* transform: translateX(0); */
+    opacity: 1;
+  }
 }
