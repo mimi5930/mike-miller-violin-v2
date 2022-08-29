@@ -1,5 +1,5 @@
 :root {
-  --teaching-image-height: 70vh;
+  --teaching-image-height: 75vh;
 }
 
 .lessons-container {
@@ -14,12 +14,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: var(--teaching-image-height);
+  min-height: var(--teaching-image-height);
 }
 
 .lessons-info {
   width: 30vw;
-  height: 20vh;
+  min-height: 20vh;
   text-align: center;
   font-size: 18px;
   background-color: white;
@@ -32,6 +32,7 @@
 }
 
 .lessons-info-container > .first-child {
+  text-align: start;
   font-weight: bold;
 }
 
@@ -50,6 +51,7 @@
   }
 
   .lessons-info-container {
+    height: 100vh;
     justify-content: space-evenly;
   }
 

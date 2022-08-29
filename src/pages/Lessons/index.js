@@ -1,6 +1,6 @@
+import { DollarCircleOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Divider } from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './lessons.css';
 
 export default function Lessons() {
@@ -34,7 +34,11 @@ export default function Lessons() {
               For information on billing policies, supplies, lesson
               cancellation, make-up lessons, practice tips, and much more!
             </p>
-            <Button type="primary" className="lessons-button">
+            <Button
+              type="primary"
+              className="lessons-button"
+              icon={<InfoCircleOutlined />}
+            >
               Lesson Handbook
             </Button>
           </div>
@@ -45,7 +49,9 @@ export default function Lessons() {
               target="_blank"
               rel="noreferrer"
             >
-              <Button type="primary">Venmo</Button>
+              <Button type="primary" icon={<DollarCircleOutlined />}>
+                Venmo
+              </Button>
             </a>
           </div>
         </div>
