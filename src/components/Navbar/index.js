@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Drawer, Layout } from 'antd';
 import {
   YoutubeFilled,
@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import { useMediaQuery } from 'react-responsive';
+import { setDocumentTitle } from '../../utils/helpers';
 
 const styles = {
   header: {
@@ -67,6 +68,14 @@ const styles = {
   hamburgerStyle: { width: '50px', height: '50px' }
 };
 
+const navItems = [
+  { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
+  { label: 'Events', key: 'evt', nav: 'events' },
+  { label: 'Lessons', key: 'les', nav: 'lessons' },
+  { label: 'See', key: 'see', nav: 'see' },
+  { label: 'Listen', key: 'lis', nav: 'listen' }
+];
+
 export default function Navbar() {
   const { Header } = Layout;
 
@@ -78,13 +87,9 @@ export default function Navbar() {
   );
   const [drawer, setDrawer] = useState(false);
 
-  const navItems = [
-    { label: 'Bio/Resume', key: 'bio', nav: 'bio' },
-    { label: 'Events', key: 'evt', nav: 'events' },
-    { label: 'Lessons', key: 'les', nav: 'lessons' },
-    { label: 'See', key: 'see', nav: 'see' },
-    { label: 'Listen', key: 'lis', nav: 'listen' }
-  ];
+  useEffect(() => {
+    setDocumentTitle(currentPage);
+  }, [currentPage]);
 
   const linkItems = [
     {
@@ -147,7 +152,7 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link to={'/#contact'}>
+          <Link to={'/#contact'} onClick={() => handleNavClick('')}>
             <Button ghost className="contact-button">
               CONTACT
             </Button>

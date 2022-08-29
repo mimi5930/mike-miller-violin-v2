@@ -14,3 +14,26 @@ export function sortDates(eventsArr) {
     return compareAsc(a, b);
   });
 }
+
+export function setDocumentTitle(page) {
+  switch (page) {
+    case 'lessons':
+      document.title = 'Lessons - Mike Miller';
+      break;
+    case 'bio':
+      document.title = 'Bio - Mike Miller';
+      break;
+    case 'events':
+      document.title = 'Events - Mike Miller';
+      break;
+    case 'see':
+      document.title = 'See - Mike Miller';
+      break;
+    case 'listen':
+      document.title = 'Listen - Mike Miller';
+      break;
+    default:
+      document.title = 'Mike Miller';
+      break;
+  }
+}
