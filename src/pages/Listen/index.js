@@ -15,6 +15,7 @@ export default function Listen() {
       <h1 className="page-title">Listen to Mike</h1>
       <Divider></Divider>
       <div
+        className="fade-in"
         style={
           !smallScreen
             ? {

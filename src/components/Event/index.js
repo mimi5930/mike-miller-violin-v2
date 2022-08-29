@@ -32,7 +32,10 @@ const styles = {
   },
   image: {
     backgroundColor: 'white',
-    height: '300px'
+    maxHeight: '300px',
+    maxWidth: '100%',
+    height: 'auto',
+    width: 'auto'
   },
   mobileImage: {
     backgroundColor: 'white',
@@ -42,7 +45,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'start',
-    marginLeft: '40px'
+    marginLeft: '1vw'
   },
   mobileInfoContainer: {
     marginTop: '30px',

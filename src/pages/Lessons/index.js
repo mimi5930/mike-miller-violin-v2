@@ -1,5 +1,7 @@
-import { Divider } from 'antd';
+import { Button, Divider } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './lessons.css';
 
 export default function Lessons() {
   return (
@@ -9,9 +11,46 @@ export default function Lessons() {
         backgroundColor: 'var(--background-color)'
       }}
     >
-      <h1 className="page-title">Lessons with Mike</h1>
-      <Divider></Divider>
-      <img src=""></img>
+      <div>
+        <h1 className="page-title">Lessons</h1>
+        <Divider></Divider>
+      </div>
+      <section className="lessons-container fade-in">
+        <img
+          className="lessons-image"
+          src={require('../../images/mike-teaching.jpg')}
+          alt="Mike staring to the information displayed on the screen"
+        ></img>
+        <div className="lessons-info-container">
+          <div className="lessons-info first-child">
+            <p>
+              Having received his Master's in Violin Performance and Pedagogy,
+              Mike is excited to help students of all ages achieve their goals
+              in music.
+            </p>
+          </div>
+          <div className="lessons-info">
+            <p>
+              For information on billing policies, supplies, lesson
+              cancellation, make-up lessons, practice tips, and much more!
+            </p>
+            <Button type="primary" className="lessons-button">
+              Lesson Handbook
+            </Button>
+          </div>
+          <div className="lessons-info">
+            <p>Mike currently accepts payment through venmo</p>
+            <a
+              href="https://venmo.com/u/Mike-Miller-243"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button type="primary">Venmo</Button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="lessons-hero-container"></section>
       <div
         style={{
           display: 'flex',
@@ -19,11 +58,7 @@ export default function Lessons() {
           margin: 20,
           padding: 20
         }}
-      >
-        <div>
-          <h2></h2>
-        </div>
-      </div>
+      ></div>
     </div>
   );
 }

@@ -1,0 +1,63 @@
+:root {
+  --teaching-image-height: 70vh;
+}
+
+.lessons-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  margin: 0 10vw;
+}
+
+.lessons-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--teaching-image-height);
+}
+
+.lessons-info {
+  width: 30vw;
+  height: 20vh;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border: 5px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.lessons-info-container > .first-child {
+  font-weight: bold;
+}
+
+.lessons-image {
+  max-height: var(--teaching-image-height);
+  max-width: 70vw;
+  height: auto;
+  width: auto;
+  border: 5px solid var(--border-color);
+}
+
+@media (max-width: 1080px) {
+  .lessons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lessons-info-container {
+    justify-content: space-evenly;
+  }
+
+  .lessons-info {
+    width: 60vw;
+  }
+
+  .lessons-image {
+    width: fit-content;
+  }
+}
