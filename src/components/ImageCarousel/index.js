@@ -3,17 +3,11 @@ import { Carousel, Image, Button } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-export default function ImageCarousel({
-  title,
-  text,
-  href,
-  images,
-  authorFolder
-}) {
+export default function ImageCarousel({ text, href, images, authorFolder }) {
   const carouselRef = useRef();
 
   return (
-    <>
+    <div className="fade-in">
       <div
         style={{
           display: 'flex',
@@ -22,7 +16,6 @@ export default function ImageCarousel({
           alignItems: 'center'
         }}
       >
-        <h2 style={{ textAlign: 'center', fontSize: '30px' }}>{title}</h2>
         <p
           style={{
             fontSize: '18px',
@@ -51,7 +44,7 @@ export default function ImageCarousel({
                     maxWidth: '100%',
                     background: 'var(--palette-maroon)'
                   }}
-                  src={require(`../../pages/See/carouselImages/${authorFolder}/${image.name}`)}
+                  src={require(`../../pages/SeeCollection/carouselImages/${authorFolder}/${image.name}`)}
                   alt={image.alt}
                 ></Image>
               </div>
@@ -79,6 +72,6 @@ export default function ImageCarousel({
           onClick={() => carouselRef.current.next()}
         />
       </div>
-    </>
+    </div>
   );
 }

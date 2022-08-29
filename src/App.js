@@ -12,6 +12,7 @@ import { Routes, Route } from 'react-router-dom';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import Bio from './pages/Bio';
+import SeeCollection from './pages/SeeCollection';
 
 function App() {
   return (
@@ -23,9 +24,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="bio" element={<Bio />} />
             <Route path="listen" element={<Listen />} />
-            <Route path="see" element={<See />}>
-              <Route path=":collectionName" />
-            </Route>
+            <Route path="see" element={<See />} />
+            <Route path="see/:collectionName" element={<SeeCollection />} />
             <Route path="lessons" element={<Lessons />} />
             <Route path="events" element={<Events />} />
             <Route path="events/:eventId" element={<EventInfo />} />

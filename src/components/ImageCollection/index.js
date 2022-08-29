@@ -3,20 +3,20 @@ import { Button } from 'antd';
 import './image-collection.css';
 
 export default function ImageCollection({
-  title,
+  buttonTitle,
   authorFolder,
   displayImage,
-  buttonLink
+  buttonLinkTo
 }) {
   return (
     <div
       className="collection-item"
       style={{
-        backgroundImage: `url(${require(`../../pages/See/carouselImages/${authorFolder}/${displayImage}`)})`
+        backgroundImage: `url(${require(`../../pages/SeeCollection/carouselImages/${authorFolder}/${displayImage}`)})`
       }}
     >
-      <Link className="collection-link" to={`/see/${buttonLink}`}>
-        <Button type="primary">{title}</Button>
+      <Link className="collection-link" to={`/see/${buttonLinkTo}`}>
+        <Button type="primary">{buttonTitle}</Button>
       </Link>
     </div>
   );
