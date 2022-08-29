@@ -38,14 +38,10 @@ p {
 
 @keyframes fade-in {
   0% {
-    /* transform: translateX(-20%); */
     opacity: 0;
   }
-  /* 70% {
-    opacity: 0.3;
-  } */
+
   100% {
-    /* transform: translateX(0); */
     opacity: 1;
   }
 }
