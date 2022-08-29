@@ -84,9 +84,13 @@ export default function Bio() {
             in the Twin Cities.
           </p>
           <div style={{ padding: '0px 30px 30px' }}>
-            <Button icon={<DownOutlined />} type="primary">
-              Mr. Miller's Resume
-            </Button>
+            <a
+              href={require('../../assets/Michael Miller Music Resume 2021.pdf')}
+            >
+              <Button icon={<DownOutlined />} type="primary">
+                Mr. Miller's Resume
+              </Button>
+            </a>
           </div>
         </div>
       </div>

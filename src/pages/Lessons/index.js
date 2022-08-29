@@ -34,13 +34,17 @@ export default function Lessons() {
               For information on billing policies, supplies, lesson
               cancellation, make-up lessons, practice tips, and much more!
             </p>
-            <Button
-              type="primary"
-              className="lessons-button"
-              icon={<InfoCircleOutlined />}
+            <a
+              href={require('../../assets/Mike Miller Violin Studio Handbook 2021 Covid19 Adjusted.pdf')}
             >
-              Lesson Handbook
-            </Button>
+              <Button
+                type="primary"
+                className="lessons-button"
+                icon={<InfoCircleOutlined />}
+              >
+                Lesson Handbook
+              </Button>
+            </a>
           </div>
           <div className="lessons-info">
             <p>Mike currently accepts payment through venmo</p>
