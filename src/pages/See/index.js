@@ -18,6 +18,7 @@ const kenzieInfo = {
   ),
   images: kenzieImages,
   displayName: 'BackViolin.jpg',
+  buttonLink: 'mckenzie-verhulst-2022',
   galleryDisplay: true
 };
 
@@ -28,6 +29,7 @@ const dianeInfo = {
   href: null,
   images: dianeImages,
   displayName: 'Mike4.jpg',
+  buttonLink: 'diane-hallen-2019',
   galleryDisplay: true
 };
 
@@ -40,12 +42,20 @@ export default function See() {
     galleryDisplay: false
   });
 
+  console.log(collections[0].images[0]);
+
   useEffect(() => {
-    if (collectionName === 'mckenzie-verhulst-2022') {
-      setCurrentGallery(kenzieInfo);
-    } else if (collectionName === 'diane-hallen-2019') {
-      setCurrentGallery(dianeInfo);
-    } else setCurrentGallery({ galleryDisplay: false });
+    switch (collectionName) {
+      case 'mckenzie-verhulst-2022':
+        setCurrentGallery(kenzieInfo);
+        break;
+      case 'diane-hallen-2019':
+        setCurrentGallery(dianeInfo);
+        break;
+      default:
+        setCurrentGallery({ galleryDisplay: false });
+        break;
+    }
   }, [collectionName]);
 
   return (
@@ -59,18 +69,42 @@ export default function See() {
       <Divider></Divider>
 
       {currentGallery.galleryDisplay ? (
-        <ImageCarousel
-          title={currentGallery.title}
-          text={currentGallery.text}
-          href={currentGallery.href}
-          authorFolder={currentGallery.authorFolder}
-          images={currentGallery.images}
-        ></ImageCarousel>
+        <section className="fade-in">
+          <ImageCarousel
+            title={currentGallery.title}
+            text={currentGallery.text}
+            href={currentGallery.href}
+            authorFolder={currentGallery.authorFolder}
+            images={currentGallery.images}
+          ></ImageCarousel>
+        </section>
       ) : (
-        <ImageCollection
-          authorFolder="kenzieImages"
-          displayImage="BackViolin.jpg"
-        ></ImageCollection>
+        <section className="fade-in">
+          <h2 style={{ textAlign: 'center', fontSize: '30px' }}>Collections</h2>
+          <div
+            style={{
+              minHeight: '50vh',
+              border: '2px solid var(--title-color)',
+              margin: '5px 10vw',
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+              flexWrap: 'wrap'
+            }}
+          >
+            {collections.map((collection, index) => {
+              return (
+                <ImageCollection
+                  key={index}
+                  title={collection.title}
+                  authorFolder={collection.authorFolder}
+                  displayImage={collection.images[0].name}
+                  buttonLink={collection.buttonLink}
+                ></ImageCollection>
+              );
+            })}
+          </div>
+        </section>
       )}
     </div>
   );
