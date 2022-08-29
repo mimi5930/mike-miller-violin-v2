@@ -1,11 +1,51 @@
-import { Button, Input, Form, Radio, Space } from 'antd';
-import React from 'react';
+import { Button, Input, Form, Radio, Space, message } from 'antd';
+import React, { useState } from 'react';
 
 const { TextArea } = Input;
 
 export default function Contact({ reference }) {
+  const [loading, setLoading] = useState(false);
+
+  const [form] = Form.useForm();
+
+  function submitSuccess() {
+    message.success('Submission successful!');
+  }
+
+  function submitError() {
+    message.error('There was an error in sending your message!');
+  }
+
+  async function submitForm(values) {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+      console.log('successful response', response);
+      if (response.ok) {
+        setLoading(false);
+        submitSuccess();
+        form.resetFields();
+      } else {
+        setLoading(false);
+        submitError();
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      submitError();
+    }
+  }
+
   function onFinish(values) {
     console.log('success', values);
+    submitForm(values);
   }
 
   function onFinishFailed(errorInfo) {
@@ -35,6 +75,7 @@ export default function Contact({ reference }) {
         }}
       >
         <Form
+          form={form}
           name="contact-form"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -87,7 +128,7 @@ export default function Contact({ reference }) {
             <TextArea />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               Submit
             </Button>
           </Form.Item>
