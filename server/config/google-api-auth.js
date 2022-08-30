@@ -1,5 +1,5 @@
 const { google } = require('googleapis');
-const scopes = 'https://www.googleapis.com/auth/calendar';
+const scopes = 'https://www.googleapis.com/auth/calendar.readonly';
 require('dotenv').config();
 
 function calendarAuth() {
