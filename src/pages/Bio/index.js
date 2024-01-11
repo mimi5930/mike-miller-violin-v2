@@ -62,7 +62,7 @@ export default function Bio() {
             passions have combined perfectly through the violin. Currently,
             Miller performs as Concertmaster of SCVSO under the direction of
             Kris Tjornehoj and as a member of the Uppsala String Quartet. Having
-            just received a Master’s in Violin Performance and Pedagogy at the
+            received a Master’s in Violin Performance and Pedagogy at the
             University of Colorado Boulder, studying under Professor Harumi
             Rhodes, Miller is excited to bring his love of music back to
             Minnesota. His undergraduate studies took place at Concordia College
