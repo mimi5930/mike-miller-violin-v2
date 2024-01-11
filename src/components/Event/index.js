@@ -55,13 +55,30 @@ const styles = {
   },
   eventTitle: { fontSize: 40, marginBottom: 0 },
   eventTime: { fontSize: 20, marginBottom: 0 },
-  eventLocation: { fontSize: 20, marginBottom: 0 }
+  eventLocation: { fontSize: 20, marginBottom: 0 },
+  monthContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'var(--title-color)',
+    padding: '0 20px',
+    opacity: '.85'
+  }
+};
+
+const TITLE = {
+  SCVSO: 'SCVSO',
+  FMSO: 'FMSO'
 };
 
 export default function Event({ id, title, time, location, smallScreen }) {
   function determineImg(eventTitle) {
-    if (eventTitle.includes('SCVSO')) return require('../../images/SCVSO.webp');
-    else if (eventTitle.includes('FMSO'))
+    if (eventTitle.includes(TITLE.SCVSO))
+      return require('../../images/SCVSO.webp');
+    else if (eventTitle.includes(TITLE.FMSO))
       return require('../../images/fmso.png');
     else return 'https://dummyimage.com/500X400.png';
   }
@@ -87,19 +104,7 @@ export default function Event({ id, title, time, location, smallScreen }) {
               alt="A logo for the event"
               style={smallScreen ? styles.mobileImage : styles.image}
             ></img>
-            <div
-              style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                backgroundColor: 'var(--title-color)',
-                padding: '0 20px',
-                opacity: '.85'
-              }}
-            >
+            <div style={styles.monthContainer}>
               <h3
                 style={{
                   color: 'white',
