@@ -3,6 +3,8 @@ import Event from '../../components/Event';
 import { Card, Divider, Skeleton } from 'antd';
 import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
+import { isStatic } from '../../utils/isStatic';
+import jsonData from '../../assets/eventData/data.json';
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,24 +35,31 @@ export default function Events() {
   const eventsLoading = useSelector(state => state.events.isLoading);
 
   useEffect(() => {
-    async function getEvents() {
-      try {
-        const response = await fetch('/api/events');
-        let responseData = await response.json();
-        // organize dates
-        if (responseData.length > 1) responseData = sortDates(responseData);
-        dispatch(setEvents(responseData));
-        dispatch(completeLoading());
-      } catch (e) {
-        console.log(e);
+    if (isStatic() && eventsList.length === 0) {
+      let data = jsonData;
+      if (data.length > 1) data = sortDates([...data]);
+      dispatch(setEvents(data));
+      dispatch(completeLoading());
+    } else {
+      async function getEvents() {
+        try {
+          const response = await fetch('/api/events');
+          let responseData = await response.json();
+          // organize dates
+          if (responseData.length > 1) responseData = sortDates(responseData);
+          dispatch(setEvents(responseData));
+          dispatch(completeLoading());
+        } catch (e) {
+          console.log(e);
+        }
       }
+      if (eventsList.length === 0) getEvents();
     }
-    if (eventsList.length === 0) getEvents();
   }, []);
 
   return (
     <div style={styles.page}>
-      <h1 className="page-title">Upcoming Events</h1>
+      <h1 className="page-title">Events</h1>
       <Divider></Divider>
       {eventsLoading ? (
         <div style={styles.skeletonContainer}>

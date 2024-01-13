@@ -27,3 +27,6 @@ yarn-error.log*
 
 #test endpoints
 *.http
+
+#eventData
+/src/assets/eventData/*

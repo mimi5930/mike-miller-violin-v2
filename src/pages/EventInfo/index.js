@@ -12,6 +12,8 @@ import {
 } from '@ant-design/icons';
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
+import { isStatic } from '../../utils/isStatic';
+import jsonData from '../../assets/eventData/data.json';
 
 // redux imports
 import { useSelector } from 'react-redux/es/exports';
@@ -30,20 +32,33 @@ export default function EventInfo() {
 
   useEffect(() => {
     async function getEventData() {
-      try {
-        const response = await fetch(`/api/event/${eventId}`);
-        if (!response.ok) {
-          setError(true);
+      // site running through a server
+      if (!isStatic()) {
+        try {
+          const response = await fetch(`/api/event/${eventId}`);
+          if (!response.ok) {
+            setError(true);
+            return;
+          }
+          const data = await response.json();
+          setEventData(data);
           return;
+        } catch (error) {
+          console.log(error);
+          setError(true);
+        } finally {
+          setLoading(false);
         }
-        const data = await response.json();
-        setEventData(data);
-        return;
-      } catch (error) {
-        console.log(error);
-        setError(true);
-      } finally {
-        setLoading(false);
+      } else {
+        let eventData = jsonData.filter(data => data.id === eventId);
+        if (!eventData.length) {
+          setError(true);
+          setLoading(false);
+        } else {
+          console.log(eventData);
+          setEventData(eventData[0]);
+          setLoading(false);
+        }
       }
     }
 
