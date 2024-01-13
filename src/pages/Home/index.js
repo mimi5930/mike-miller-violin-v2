@@ -35,7 +35,7 @@ const styles = {
     position: 'absolute',
     top: '25%',
     right: '5vw',
-    backgroundColor: 'rgba(255, 236, 209, .85)',
+    backgroundColor: 'var(--background-color)',
     padding: '30px'
   },
   smallHeroText: {
