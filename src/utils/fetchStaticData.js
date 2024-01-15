@@ -11,7 +11,7 @@ async function main() {
 
   let startDate = new Date();
   // set start date to three months ago
-  // startDate.setMonth(startDate.getMonth() - 3);
+  startDate.setMonth(startDate.getMonth() - 3);
 
   try {
     const result = await calendar.events.list({
