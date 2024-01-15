@@ -59,7 +59,7 @@ export default function Events() {
 
   return (
     <div style={styles.page}>
-      <h1 className="page-title">Events</h1>
+      <h1 className="page-title">Upcoming Events</h1>
       <Divider></Divider>
       {eventsLoading ? (
         <div style={styles.skeletonContainer}>
@@ -68,18 +68,36 @@ export default function Events() {
           </Card>
         </div>
       ) : (
-        eventsList.map(event => {
-          return (
-            <Event
-              key={event.id}
-              id={event.id}
-              title={event.summary}
-              time={event.start.dateTime}
-              location={event.location}
-              smallScreen={smallScreen}
-            />
-          );
-        })
+        <>
+          {eventsList.futureDates.map(event => {
+            return (
+              <Event
+                key={event.id}
+                id={event.id}
+                title={event.summary}
+                time={event.start.dateTime}
+                location={event.location}
+                smallScreen={smallScreen}
+              />
+            );
+          })}
+          <div style={{ marginTop: '5rem' }}></div>
+          <Divider className="m"></Divider>
+          <h1 className="page-title">Past Events</h1>
+          <Divider></Divider>
+          {eventsList.pastDates.map(event => {
+            return (
+              <Event
+                key={event.id}
+                id={event.id}
+                title={event.summary}
+                time={event.start.dateTime}
+                location={event.location}
+                smallScreen={smallScreen}
+              />
+            );
+          })}
+        </>
       )}
     </div>
   );

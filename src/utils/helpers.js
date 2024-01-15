@@ -1,5 +1,3 @@
-import compareAsc from 'date-fns/compareAsc';
-
 export function configureHref(link, email) {
   let splitLink = link.split('?');
   let newLink = `${splitLink[0]}?action=TEMPLATE&tm${splitLink[1]}`;
@@ -8,11 +6,26 @@ export function configureHref(link, email) {
 }
 
 export function sortDates(eventsArr) {
-  return eventsArr.sort((a, b) => {
-    a = new Date(a.start.dateTime);
-    b = new Date(b.start.dateTime);
-    return compareAsc(a, b);
+  const sortDates = eventsArr.sort((a, b) => {
+    a = Date.parse(a.start.dateTime);
+    b = Date.parse(b.start.dateTime);
+    return a - b;
   });
+  let pastDates = [],
+    futureDates = [];
+  sortDates.forEach(date => {
+    if (Date.parse(date.start.dateTime) >= Date.now()) {
+      futureDates.push(date);
+    } else {
+      pastDates.push(date);
+    }
+  });
+  pastDates.sort((a, b) => {
+    a = Date.parse(a.start.dateTime);
+    b = Date.parse(b.start.dateTime);
+    return b - a;
+  });
+  return { pastDates, futureDates };
 }
 
 export function setDocumentTitle(page) {
