@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
       {smallScreen && (
-        <div style={{ backgroundColor: 'rgba(255, 236, 209)' }}>
+        <div style={{ backgroundColor: 'var(--background-color)' }}>
           <p className="text" style={styles.smallHeroText}>
             Mike Miller is a violin teacher and performer in Woodbury,
             Minnesota. He has a strong passion for providing audiences with
