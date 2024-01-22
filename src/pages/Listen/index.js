@@ -45,7 +45,7 @@ export default function Listen() {
         }
       >
         <h2 style={{ fontSize: '50px', color: 'var(--title-color)' }}>
-          Into Orbit
+          Catena String Quartet
         </h2>
         <iframe
           style={
@@ -54,22 +54,27 @@ export default function Listen() {
               : { width: '40vh', height: '40vh' }
           }
           class="card-img-top"
-          src="https://www.youtube.com/embed/vZfoGfIU7K0"
+          src="https://www.youtube.com/embed/78ROQZqGtxA?si=1Emh16jUjYa32-41"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
         <p style={{ fontSize: '20px', padding: 20 }}>
-          Working with Wenbin Lyu on this trio was such a rewarding experience.
-          The two movements contrast with a beautiful, searching first movement
-          followed by a fast and fearless finale. I felt like a rock star!
-          Premiering this work with my close friends, Xinqu Li and Nicholas
-          Johnson, made the project so fun and special to me.
+          Playing violin with the Catena String Quartet is a dream come true for
+          Mr. Miller. He has always found a special joy in chamber music. There
+          is a special ability in such a setting to speak more personally
+          through the music and deliver a deeper, meaningful performance.
           <br />
           <br /> See more of Mike's recordings on his{' '}
           <a href="https://www.youtube.com/channel/UCYT-un1xuD4-k0bAVKCbPMg">
             YouTube Channel
+          </a>
+          <br></br>
+          And more of Catena String Quartet's on{' '}
+          <a href="https://www.youtube.com/@CatenaStringQuartet">
+            {' '}
+            Catena String Quartet's YouTube Channel
           </a>
         </p>
       </div>
