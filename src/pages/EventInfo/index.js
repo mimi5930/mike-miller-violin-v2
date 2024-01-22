@@ -13,7 +13,7 @@ import {
 import { configureHref } from '../../utils/helpers';
 import './event-info.css';
 import { isStatic } from '../../utils/isStatic';
-import jsonData from '../../assets/eventData/data.json';
+import jsonData from '../../assets/eventData.json';
 
 // redux imports
 import { useSelector } from 'react-redux/es/exports';

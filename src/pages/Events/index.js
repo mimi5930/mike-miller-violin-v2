@@ -4,7 +4,7 @@ import { Card, Divider, Skeleton } from 'antd';
 import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
 import { isStatic } from '../../utils/isStatic';
-import jsonData from '../../assets/eventData/data.json';
+import jsonData from '../../assets/eventData.json';
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
