@@ -31,17 +31,18 @@
   padding: 10px 20px;
 }
 
-.lessons-info-container > .first-child {
+.lessons-info-container > :first-child {
   text-align: start;
   font-weight: bold;
 }
 
 .lessons-image {
-  max-height: var(--teaching-image-height);
-  max-width: 70vw;
-  height: auto;
-  width: auto;
+  background-color: black;
+  height: var(--teaching-image-height);
+  width: 30%;
+  min-width: 350px;
   border: 5px solid var(--border-color);
+  object-fit: cover;
 }
 
 @media (max-width: 1080px) {

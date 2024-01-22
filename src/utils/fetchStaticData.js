@@ -21,7 +21,7 @@ async function main() {
     });
     const eventList = result.data.items;
     fs.writeFile(
-      path.join(__dirname, '../assets/eventData/data.json'),
+      path.join(__dirname, '../assets/eventData.json'),
       JSON.stringify(eventList),
       error => {
         if (error) {

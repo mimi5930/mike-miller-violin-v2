@@ -22,7 +22,7 @@ export default function Lessons() {
           alt="Mike staring to the information displayed on the screen"
         ></img>
         <div className="lessons-info-container">
-          <div className="lessons-info first-child">
+          <div className="lessons-info">
             <p>
               Having received his Master's in Violin Performance and Pedagogy,
               Mike is excited to help students of all ages achieve their goals

@@ -32,7 +32,7 @@ const styles = {
   image: {
     width: '250px',
     height: '200px',
-    backgroundColor: 'white',
+    backgroundColor: 'var(--background-color)',
     objectFit: 'contain'
   },
   mobileImage: {
@@ -78,7 +78,8 @@ export default function Event({ id, title, time, location, smallScreen }) {
       return require('../../images/SCVSO.webp');
     else if (eventTitle.includes(TITLE.FMSO))
       return require('../../images/fmso.png');
-    else return 'https://dummyimage.com/500X400.png';
+    else
+      return require('../../pages/SeeCollection/carouselImages/kenzie2022/upbowBow.jpg');
   }
 
   return (
