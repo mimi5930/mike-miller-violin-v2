@@ -61,8 +61,8 @@ export default function Bio() {
             Mike Miller has always felt inspired to teach and perform. These
             passions have combined perfectly through the violin. Currently,
             Miller performs as Concertmaster of SCVSO under the direction of
-            Kris Tjornehoj and as a member of the Uppsala String Quartet. Having
-            received a Master’s in Violin Performance and Pedagogy at the
+            Kris Tjornehoj and as a member of the Catena String Quartet. Having
+            received a Master&#39;s in Violin Performance and Pedagogy at the
             University of Colorado Boulder, studying under Professor Harumi
             Rhodes, Miller is excited to bring his love of music back to
             Minnesota. His undergraduate studies took place at Concordia College
@@ -74,8 +74,8 @@ export default function Bio() {
             String Quartet. Miller has also taught at the Trollwood Performing
             Arts school for two years, was one of the first teachers involved
             with the Concordia String Preparatory program, taught as a string
-            mentor for the North Star Chamber Music Festival’s first year, and
-            has led his private students to winning local competitions and
+            mentor for the North Star Chamber Music Festival&#39;s first year,
+            and has led his private students to winning local competitions and
             obtaining scholarships to their dream schools. In Colorado, Mr.
             Miller performed as a violinist in the Campanile String Quartet,
             Boulder Symphony, Longmont Symphony Orchestra, and has participated
