@@ -25,17 +25,15 @@ const styles = {
     alignItems: 'center'
   },
   imageContainer: {
-    width: '30vh',
     display: 'flex',
     justifyContent: 'center',
     position: 'relative'
   },
   image: {
+    width: '250px',
+    height: '200px',
     backgroundColor: 'white',
-    maxHeight: '300px',
-    maxWidth: '100%',
-    height: 'auto',
-    width: 'auto'
+    objectFit: 'contain'
   },
   mobileImage: {
     backgroundColor: 'white',
@@ -101,7 +99,7 @@ export default function Event({ id, title, time, location, smallScreen }) {
           <div style={styles.imageContainer}>
             <img
               src={determineImg(title)}
-              alt="A logo for the event"
+              alt="The event's logo"
               style={smallScreen ? styles.mobileImage : styles.image}
             ></img>
             <div style={styles.monthContainer}>
