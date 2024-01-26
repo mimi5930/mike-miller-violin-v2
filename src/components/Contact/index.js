@@ -1,5 +1,6 @@
 import { Button, Input, Form, Radio, Space, message } from 'antd';
 import React, { useState } from 'react';
+import { isStatic } from '../../utils/isStatic';
 
 const { TextArea } = Input;
 
@@ -18,28 +19,57 @@ export default function Contact({ reference }) {
 
   async function submitForm(values) {
     setLoading(true);
-    try {
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-      console.log('successful response', response);
-      if (response.ok) {
+    if (isStatic) {
+      // if running on a static site
+      try {
+        const response = await fetch(
+          'https://formsubmit.co/ajax/mikemillerviolin@gmail.com',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify(values)
+          }
+        );
+        if (response.ok) {
+          setLoading(false);
+          submitSuccess();
+          form.resetFields();
+        } else {
+          setLoading(false);
+          submitError();
+        }
+      } catch (error) {
+        console.log(error);
         setLoading(false);
-        submitSuccess();
-        form.resetFields();
-      } else {
+      }
+    } else {
+      // if running on a server
+      try {
+        const response = await fetch('/api/submit-form', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(values)
+        });
+        console.log('successful response', response);
+        if (response.ok) {
+          setLoading(false);
+          submitSuccess();
+          form.resetFields();
+        } else {
+          setLoading(false);
+          submitError();
+        }
+      } catch (error) {
+        console.log(error);
         setLoading(false);
         submitError();
       }
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-      submitError();
     }
   }
 
