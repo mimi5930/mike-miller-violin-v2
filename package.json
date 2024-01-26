@@ -28,6 +28,8 @@
   },
   "scripts": {
     "start": "node server/server.js",
+    "predeploy": "npm run get-events && npm run build",
+    "deploy": "gh-pages -d build",
     "react-start": "react-scripts start",
     "develop": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
     "static-dev": "react-scripts start",
@@ -56,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "nodemon": "^2.0.19"
   }
 }
