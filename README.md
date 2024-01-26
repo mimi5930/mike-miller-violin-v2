@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Mike Miller Violin Version 2.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Website
 
-## Available Scripts
+mikemillerviolin.com
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+A website to showcase Mike Miller as a performer and educator, provide links to listen and engage with Miller, and inform clients of future performances/events.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Deployment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Two forms of deployment are available, either through a server-based hosting service or static hosting.  
+The current deployed version is a static build.
 
-### `npm test`
+### Server-Side Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. create a local copy of this repo and install dependencies
 
-### `npm run build`
+```console
+git clone git@github.com:mimi5930/mike-miller-violin-v2.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```console
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. In the root directory create a .env file with the following fields:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+# react
+REACT_APP_STATIC_BUILD=false
 
-### `npm run eject`
+# google-calendar auth
+CLIENT_EMAIL=#google service account
+PRIVATE_KEY=#private key provided with your service account
+CALENDAR_ID=#the calendar events are pulled from
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# node-mailer auth
+SERVICE=#mail service for sending an email
+USER=#username for email service
+PW=#password for email service
+ADMIN=#admin for email service
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- for information regarding these fields review documentation for [Google Calendar API](https://developers.google.com/calendar/api/guides/overview) and [Node Mailer](https://nodemailer.com/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Run Development Server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- To exclusively run the back-end of this project, run the following script in the root directory
 
-## Learn More
+```console
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- To run the project with a front-end, run the following script in the root directory
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```console
+npm run develop
+```
 
-### Code Splitting
+### Static Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. create a local copy of this repo and install dependencies
 
-### Analyzing the Bundle Size
+```console
+git clone git@github.com:mimi5930/mike-miller-violin-v2.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```console
+npm install
+```
 
-### Making a Progressive Web App
+2. In the root directory create a .env file with the following fields:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+# react
+REACT_APP_STATIC_BUILD=true
 
-### Advanced Configuration
+# google-calendar auth
+CLIENT_EMAIL=#google service account
+PRIVATE_KEY=#private key provided with your service account
+CALENDAR_ID=#the calendar events are pulled from
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- for information regarding these fields review documentation for [Google Calendar API](https://developers.google.com/calendar/api/guides/overview).
