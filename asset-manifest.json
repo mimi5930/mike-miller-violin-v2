@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mike-miller-violin-v2/static/css/main.fbf03a72.css",
-    "main.js": "/mike-miller-violin-v2/static/js/main.755dd61e.js",
+    "main.js": "/mike-miller-violin-v2/static/js/main.b2edee8f.js",
     "static/js/787.01c351c6.chunk.js": "/mike-miller-violin-v2/static/js/787.01c351c6.chunk.js",
     "static/media/upbowBow.jpg": "/mike-miller-violin-v2/static/media/upbowBow.152899e8d198cc0d8d41.jpg",
     "static/media/downbow.jpg": "/mike-miller-violin-v2/static/media/downbow.56bfc8a96de88e748a93.jpg",
@@ -27,11 +27,11 @@
     "static/media/fmso.png": "/mike-miller-violin-v2/static/media/fmso.e134e045b442d6c11eaf.png",
     "index.html": "/mike-miller-violin-v2/index.html",
     "main.fbf03a72.css.map": "/mike-miller-violin-v2/static/css/main.fbf03a72.css.map",
-    "main.755dd61e.js.map": "/mike-miller-violin-v2/static/js/main.755dd61e.js.map",
+    "main.b2edee8f.js.map": "/mike-miller-violin-v2/static/js/main.b2edee8f.js.map",
     "787.01c351c6.chunk.js.map": "/mike-miller-violin-v2/static/js/787.01c351c6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fbf03a72.css",
-    "static/js/main.755dd61e.js"
+    "static/js/main.b2edee8f.js"
   ]
 }
