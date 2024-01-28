@@ -118,7 +118,26 @@ export default function EventInfo() {
       }}
     >
       <div className="fade-in">
-        <h1 className="page-title">{eventData.summary}</h1>
+        <h1
+          className="page-title"
+          style={
+            !smallScreen
+              ? {
+                  textAlign: 'center',
+                  fontSize: '40px',
+                  color: 'var(--title-color)',
+                  marginBottom: 0
+                }
+              : {
+                  textAlign: 'center',
+                  fontSize: '30px',
+                  color: 'var(--title-color)',
+                  marginBottom: 0
+                }
+          }
+        >
+          {eventData.summary}
+        </h1>
         <Divider></Divider>
         <div
           style={

@@ -6,6 +6,7 @@
   font-size: 30px;
   width: 300px;
   transition: all 0.3s;
+  line-height: 3rem;
 }
 
 .main-logo:hover {

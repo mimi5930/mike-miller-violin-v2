@@ -65,7 +65,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center'
   },
-  hamburgerStyle: { width: '50px', height: '50px' }
+  hamburgerStyle: { minWidth: '50px', height: '50px' }
 };
 
 const navItems = [
