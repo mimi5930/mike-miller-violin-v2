@@ -13,6 +13,7 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import Bio from './pages/Bio';
 import SeeCollection from './pages/SeeCollection';
+// TODO: Finish editing README file
 
 function App() {
   return (

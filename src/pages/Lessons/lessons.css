@@ -61,6 +61,8 @@
   }
 
   .lessons-image {
-    width: fit-content;
+    width: 80vw;
+    heigth: auto;
+    max-width: auto;
   }
 }
