@@ -8,6 +8,7 @@ import { isStatic } from './utils/isStatic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 if (isStatic) {
+  // TODO: Perhaps find a different hosting site to avoid the use of this router
   root.render(
     <React.StrictMode>
       <HashRouter>
