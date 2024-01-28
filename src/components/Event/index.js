@@ -51,7 +51,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center'
   },
-  eventTitle: { fontSize: 40, marginBottom: 0 },
+  eventTitle: { fontSize: 25, marginBottom: '1rem' },
   eventTime: { fontSize: 20, marginBottom: 0 },
   eventLocation: { fontSize: 20, marginBottom: 0 },
   monthContainer: {
