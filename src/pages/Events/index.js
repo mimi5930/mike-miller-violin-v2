@@ -5,6 +5,8 @@ import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
 import { isStatic } from '../../utils/isStatic';
 import jsonData from '../../assets/eventData.json';
+// TODO: Special styling for past dates
+// TODO: Limit amount of events shown
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
