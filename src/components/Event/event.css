@@ -8,3 +8,19 @@
   color: var(--title-color);
   cursor: pointer;
 }
+
+.past-month-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to left top,
+    transparent 47.5%,
+    var(--background-color) 49.5%,
+    var(--background-color) 50.5%,
+    transparent 52.5%
+  );
+}

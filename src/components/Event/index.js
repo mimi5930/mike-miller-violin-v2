@@ -72,7 +72,14 @@ const TITLE = {
   FMSO: 'FMSO'
 };
 
-export default function Event({ id, title, time, location, smallScreen }) {
+export default function Event({
+  id,
+  title,
+  time,
+  location,
+  smallScreen,
+  pastEvent = false
+}) {
   function determineImg(eventTitle) {
     if (eventTitle.includes(TITLE.SCVSO))
       return require('../../images/SCVSO.webp');
@@ -103,7 +110,14 @@ export default function Event({ id, title, time, location, smallScreen }) {
               alt="The event's logo"
               style={smallScreen ? styles.mobileImage : styles.image}
             ></img>
-            <div style={styles.monthContainer}>
+            <div
+              className={pastEvent ? 'past-month-container' : ''}
+              style={
+                !pastEvent
+                  ? styles.monthContainer
+                  : { ...styles.monthContainer, opacity: 0.65 }
+              }
+            >
               <h3
                 style={{
                   color: 'white',

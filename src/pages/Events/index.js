@@ -5,8 +5,8 @@ import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
 import { isStatic } from '../../utils/isStatic';
 import jsonData from '../../assets/eventData.json';
-// TODO: Special styling for past dates
 // TODO: Limit amount of events shown
+// TODO: scroll to previous event when user presses back to all events button
 
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
@@ -96,6 +96,7 @@ export default function Events() {
                 time={event.start.dateTime}
                 location={event.location}
                 smallScreen={smallScreen}
+                pastEvent
               />
             );
           })}
