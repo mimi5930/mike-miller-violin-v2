@@ -33,7 +33,6 @@
     "deploy": "gh-pages -d build",
     "react-start": "react-scripts start",
     "develop": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-    "static-dev": "react-scripts start",
     "get-events": "node src/utils/fetchStaticData.js",
     "watch": "nodemon server/server.mjs",
     "build": "react-scripts build",
