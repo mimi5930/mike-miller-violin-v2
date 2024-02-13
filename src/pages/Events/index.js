@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Event from '../../components/Event';
-import { Card, Divider, Skeleton } from 'antd';
+import { Card, Divider, Skeleton, Button } from 'antd';
 import { sortDates } from '../../utils/helpers';
 import { useMediaQuery } from 'react-responsive';
 import { isStatic } from '../../utils/isStatic';
 import jsonData from '../../assets/eventData.json';
-// TODO: Limit amount of events shown
 // TODO: scroll to previous event when user presses back to all events button
 
 // redux imports
@@ -35,6 +34,8 @@ export default function Events() {
 
   const eventsList = useSelector(state => state.events.value);
   const eventsLoading = useSelector(state => state.events.isLoading);
+  const [showEvents, setShowEvents] = useState(false);
+  const pastEventsTitle = useRef();
 
   useEffect(() => {
     if (isStatic() && eventsList.length === 0) {
@@ -85,21 +86,51 @@ export default function Events() {
           })}
           <div style={{ marginTop: '5rem' }}></div>
           <Divider className="m"></Divider>
-          <h1 className="page-title">Past Events</h1>
+          <h1 className="page-title" ref={pastEventsTitle}>
+            Past Events
+          </h1>
           <Divider></Divider>
-          {eventsList.pastDates.map(event => {
-            return (
-              <Event
-                key={event.id}
-                id={event.id}
-                title={event.summary}
-                time={event.start.dateTime}
-                location={event.location}
-                smallScreen={smallScreen}
-                pastEvent
-              />
-            );
+          {eventsList.pastDates.map((event, index) => {
+            if (showEvents) {
+              return (
+                <>
+                  <Event
+                    key={event.id}
+                    id={event.id}
+                    title={event.summary}
+                    time={event.start.dateTime}
+                    location={event.location}
+                    smallScreen={smallScreen}
+                    pastEvent
+                  />
+                </>
+              );
+            } else {
+              if (index <= 2) {
+                return (
+                  <Event
+                    key={event.id}
+                    id={event.id}
+                    title={event.summary}
+                    time={event.start.dateTime}
+                    location={event.location}
+                    smallScreen={smallScreen}
+                    pastEvent
+                  />
+                );
+              } else return <></>;
+            }
           })}
+          <Button
+            type="primary"
+            style={{ marginBottom: 10 }}
+            onClick={() => {
+              setShowEvents(!showEvents);
+              pastEventsTitle.current.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            {showEvents ? 'Show Less Past Events' : 'Show More Past Events'}
+          </Button>
         </>
       )}
     </div>
