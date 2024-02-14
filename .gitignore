@@ -30,3 +30,5 @@ yarn-error.log*
 
 #eventData
 /src/assets/eventData.json
+# Local Netlify folder
+.netlify

@@ -37,7 +37,8 @@
     "watch": "nodemon server/server.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "netlify-deploy-setup": "netlify deploy"
   },
   "eslintConfig": {
     "extends": [
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
+    "netlify-cli": "^17.16.2",
     "nodemon": "^2.0.19"
   }
 }
