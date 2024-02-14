@@ -38,7 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "netlify-deploy-setup": "netlify deploy"
+    "netlify-deploy-setup": "netlify deploy",
+    "netlify-deploy": "netlify deploy --prod"
   },
   "eslintConfig": {
     "extends": [
